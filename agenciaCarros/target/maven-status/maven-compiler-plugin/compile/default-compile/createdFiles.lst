@@ -6,6 +6,7 @@ com\unab\edu\vistas\crudProveedor$1.class
 com\unab\edu\vistas\Login$2.class
 com\unab\edu\vistas\crudMarca.class
 com\unab\edu\vistas\crudEmpleado$4.class
+com\unab\edu\entidades\Marca.class
 com\unab\edu\vistas\crudModelo.class
 com\unab\edu\vistas\crudUsuario.class
 com\unab\edu\dao\EmpleadoDao.class
