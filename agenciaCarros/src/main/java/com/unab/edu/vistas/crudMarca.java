@@ -19,17 +19,18 @@ public class crudMarca extends javax.swing.JFrame {
 
         this.setContentPane(fondo);
         initComponents();
+        MostrarTablaMarca();
     }
     
-    void MostrarTablaPersona(){
-    String TITULOS[] = {"ID", "NOMBRE"};
+    void MostrarTablaMarca(){
+    String TITULOS[] = {"ID", "MARCA"};
         DefaultTableModel modeloTabla = new DefaultTableModel(null, TITULOS);
         MarcaDao claseMarca = new MarcaDao();
         ArrayList<Marca> Personas = claseMarca.MostrarMarcas();
         String filas[] = new String[3];
         for (var IterarDatosPersona : Personas) {
             filas[0] = String.valueOf(IterarDatosPersona.getId());
-            filas[1] = IterarDatosPersona.getNombre();
+            filas[1] = IterarDatosPersona.getNombreMarca();
             
             
             modeloTabla.addRow(filas);
@@ -191,7 +192,7 @@ public class crudMarca extends javax.swing.JFrame {
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         MarcaDao Marcas = new MarcaDao();
         Marca Marca = new Marca();
-        Marca.setNombre(txtNombre.getText());
+        Marca.setNombreMarca(txtNombre.getText());
         if (txtIdMarca.getText().isEmpty()) {
             Marcas.agregarMarca(Marca);
         } else {
@@ -199,7 +200,7 @@ public class crudMarca extends javax.swing.JFrame {
             Marcas.actualizarMarca(Marca);
         }
         btnLimpiar.doClick();
-        MostrarTablaPersona();
+        MostrarTablaMarca();
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
@@ -207,7 +208,7 @@ public class crudMarca extends javax.swing.JFrame {
         Marca marca = new Marca();
         marca.setId(Integer.parseInt(txtIdMarca.getText()));
         Marcas.eliminarMarca(marca);
-        MostrarTablaPersona();
+        MostrarTablaMarca();
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void tb_MarcaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_MarcaMouseClicked

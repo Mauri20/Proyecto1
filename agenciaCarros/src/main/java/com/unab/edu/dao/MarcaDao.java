@@ -20,7 +20,7 @@ public class MarcaDao {
     public void agregarMarca(Marca marca) {
         try {
             CallableStatement statement = con.prepareCall("call SP_I_Marca(?)");
-            statement.setString("MNombre", marca.getNombre());
+            statement.setString("MNombre", marca.getNombreMarca());
 
             statement.execute();
             con.close();
@@ -36,7 +36,7 @@ public class MarcaDao {
         try {
             CallableStatement statement = con.prepareCall("call SP_U_Marca(?,?)");
             statement.setInt("MIdMarca", marca.getId());
-            statement.setString("MNombre", marca.getNombre());
+            statement.setString("MNombre", marca.getNombreMarca());
 
             statement.execute();
             con.close();
@@ -69,7 +69,7 @@ public class MarcaDao {
             while (res.next()) {
                 Marca marc = new Marca();
                 marc.setId(res.getInt("idMarca"));
-                marc.setNombre(res.getString("Nombre"));
+                marc.setNombreMarca(res.getString("Nombre"));
 
                 listado.add(marc);
             }
