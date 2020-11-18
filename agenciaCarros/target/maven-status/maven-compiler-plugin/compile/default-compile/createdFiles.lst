@@ -1,6 +1,8 @@
 com\unab\edu\vistas\crudProveedor.class
 com\unab\edu\vistas\crudEmpleado.class
+com\unab\edu\vistas\crudMarca$3.class
 com\unab\edu\vistas\Login.class
+com\unab\edu\vistas\crudMarca$5.class
 com\unab\edu\vistas\crudModelo$FondoPanel.class
 com\unab\edu\vistas\crudEmpleado$2.class
 com\unab\edu\dao\ModeloDao.class
@@ -9,6 +11,7 @@ com\unab\edu\vistas\crudProveedor$1.class
 com\unab\edu\vistas\Login$2.class
 com\unab\edu\vistas\crudMarca.class
 com\unab\edu\vistas\crudEmpleado$4.class
+com\unab\edu\vistas\crudModelo$2.class
 com\unab\edu\entidades\Marca.class
 com\unab\edu\vistas\crudMarca$FondoPanel.class
 com\unab\edu\vistas\crudModelo.class
@@ -20,6 +23,7 @@ com\unab\edu\dao\EmpleadoDao.class
 com\unab\edu\entidades\Modelo.class
 com\unab\edu\entidades\Usuario.class
 com\unab\edu\conexion\Conexion.class
+com\unab\edu\vistas\crudMarca$2.class
 com\unab\edu\vistas\crudModelo$1.class
 com\unab\edu\vistas\crudEmpleado$1.class
 com\unab\edu\vistas\crudUsuario$1.class
@@ -29,3 +33,4 @@ com\unab\edu\entidades\Empleado.class
 com\unab\edu\entidades\Tablas.class
 com\unab\edu\vistas\crudEmpleado$3.class
 com\unab\edu\vistas\Login$1.class
+com\unab\edu\vistas\crudMarca$4.class
