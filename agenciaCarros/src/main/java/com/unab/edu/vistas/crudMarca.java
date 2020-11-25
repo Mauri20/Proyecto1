@@ -1,20 +1,41 @@
 package com.unab.edu.vistas;
 
+import com.unab.edu.dao.MarcaDao;
+import com.unab.edu.entidades.Marca;
 import java.awt.*;
+import java.util.ArrayList;
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author Roberto
  */
 public class crudMarca extends javax.swing.JFrame {
-    
+
     FondoPanel fondo = new FondoPanel();
-    
+
     public crudMarca() {
-        
+
         this.setContentPane(fondo);
         initComponents();
+        MostrarTablaMarca();
+    }
+    
+    void MostrarTablaMarca(){
+    String TITULOS[] = {"ID", "MARCA"};
+        DefaultTableModel modeloTabla = new DefaultTableModel(null, TITULOS);
+        MarcaDao claseMarca = new MarcaDao();
+        ArrayList<Marca> Personas = claseMarca.MostrarMarcas();
+        String filas[] = new String[3];
+        for (var IterarDatosPersona : Personas) {
+            filas[0] = String.valueOf(IterarDatosPersona.getId());
+            filas[1] = IterarDatosPersona.getNombreMarca();
+            
+            
+            modeloTabla.addRow(filas);
+        }
+        tb_Marca.setModel(modeloTabla);
     }
 
     /**
@@ -26,37 +47,56 @@ public class crudMarca extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTabbedPane1 = new javax.swing.JTabbedPane();
+        tb_Mostrar = new javax.swing.JTabbedPane();
         jPanel1 = new FondoPanel();
-        jTextField1 = new javax.swing.JTextField();
+        txtNombre = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnGuardar = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        txtIdMarca = new javax.swing.JTextField();
+        btnLimpiar = new javax.swing.JButton();
         jPanel2 = new FondoPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tb_Marca = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTabbedPane1.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        tb_Mostrar.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
 
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setForeground(new java.awt.Color(153, 153, 153));
         jLabel1.setText("Nombre Marca");
 
-        jButton1.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        jButton1.setText("Guardar");
+        btnGuardar.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        btnGuardar.setText("Guardar");
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
 
-        jButton2.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        jButton2.setText("Eliminar");
+        btnEliminar.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
 
+        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setForeground(new java.awt.Color(153, 153, 153));
         jLabel2.setText("Id Marca");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        btnLimpiar.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        btnLimpiar.setText("Limpiar");
+        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -65,39 +105,44 @@ public class crudMarca extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(8, 8, 8)
-                        .addComponent(jButton1)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(txtIdMarca, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(txtNombre, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 163, Short.MAX_VALUE))
+                            .addComponent(jLabel1))
+                        .addContainerGap(434, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnGuardar)
                         .addGap(131, 131, 131)
-                        .addComponent(jButton2))
-                    .addComponent(jLabel2)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.Alignment.LEADING, 0, 163, Short.MAX_VALUE)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.LEADING)))
-                .addContainerGap(460, Short.MAX_VALUE))
+                        .addComponent(btnEliminar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 159, Short.MAX_VALUE)
+                        .addComponent(btnLimpiar)
+                        .addGap(48, 48, 48))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addComponent(jLabel2)
-                .addGap(26, 26, 26)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 126, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(txtIdMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(60, 60, 60)
                 .addComponent(jLabel1)
-                .addGap(34, 34, 34)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(90, 90, 90)
+                .addGap(18, 18, 18)
+                .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addGap(24, 24, 24))
+                    .addComponent(btnGuardar)
+                    .addComponent(btnEliminar)
+                    .addComponent(btnLimpiar))
+                .addGap(30, 30, 30))
         );
 
-        jTabbedPane1.addTab("DATOS", jPanel1);
+        tb_Mostrar.addTab("DATOS", jPanel1);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tb_Marca.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -108,36 +153,77 @@ public class crudMarca extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        tb_Marca.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tb_MarcaMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tb_Marca);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 785, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 607, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 200, Short.MAX_VALUE))
+                .addGap(0, 85, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("LISTADO", jPanel2);
+        tb_Mostrar.addTab("LISTADO", jPanel2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addComponent(tb_Mostrar)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addComponent(tb_Mostrar)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        MarcaDao Marcas = new MarcaDao();
+        Marca Marca = new Marca();
+        Marca.setNombreMarca(txtNombre.getText());
+        if (txtIdMarca.getText().isEmpty()) {
+            Marcas.agregarMarca(Marca);
+        } else {
+            Marca.setId(Integer.parseInt(txtIdMarca.getText()));
+            Marcas.actualizarMarca(Marca);
+        }
+        btnLimpiar.doClick();
+        MostrarTablaMarca();
+    }//GEN-LAST:event_btnGuardarActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        MarcaDao Marcas = new MarcaDao();
+        Marca marca = new Marca();
+        marca.setId(Integer.parseInt(txtIdMarca.getText()));
+        Marcas.eliminarMarca(marca);
+        MostrarTablaMarca();
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void tb_MarcaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_MarcaMouseClicked
+        tb_Mostrar.setSelectedIndex(tb_Mostrar.indexOfComponent(jPanel1));
+        int fila = tb_Marca.getSelectedRow();
+        String ID = String.valueOf(tb_Marca.getValueAt(fila, 0));
+        String nombre = String.valueOf(tb_Marca.getValueAt(fila, 1));
+        txtIdMarca.setText(ID);
+        txtNombre.setText(nombre);
+    }//GEN-LAST:event_tb_MarcaMouseClicked
+
+    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+        txtIdMarca.setText(null);
+        txtNombre.setText(null);
+    }//GEN-LAST:event_btnLimpiarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -175,31 +261,32 @@ public class crudMarca extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JButton btnEliminar;
+    private javax.swing.JButton btnGuardar;
+    private javax.swing.JButton btnLimpiar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTable tb_Marca;
+    private javax.swing.JTabbedPane tb_Mostrar;
+    private javax.swing.JTextField txtIdMarca;
+    private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
 
     class FondoPanel extends JPanel {
-        
+
         private Image imagen;
-        
+
         @Override
         public void paint(Graphics g) {
             imagen = new ImageIcon(getClass().getResource("/imagenes/6.jpg")).getImage();
-            
+
             g.drawImage(imagen, 0, 0, getWidth(), getHeight(), this);
-            
+
             setOpaque(false);
-            
+
             super.paint(g);
         }
     }

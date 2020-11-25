@@ -20,7 +20,7 @@ public class ModeloDao {
     public void agregarModelo(Modelo modelo) {
         try {
             CallableStatement statement = con.prepareCall("call SP_I_Modelo(?)");
-            statement.setString("MNombre", modelo.getNombre());
+            statement.setString("MNombre", modelo.getNombreModelo());
 
             statement.execute();
             con.close();
@@ -35,8 +35,8 @@ public class ModeloDao {
      public void actualizarModelo(Modelo modelo) {
         try {
             CallableStatement statement = con.prepareCall("call SP_U_Modelo(?,?)");
-            statement.setInt("MIdModelo", modelo.getId());
-            statement.setString("MNombre", modelo.getNombre());
+            statement.setInt("MIdModelo", modelo.getIdModelo());
+            statement.setString("MNombre", modelo.getNombreModelo());
 
             statement.execute();
             con.close();
@@ -51,8 +51,8 @@ public class ModeloDao {
      
      public void eliminarModelo(Modelo modelo) {
         try {
-            CallableStatement statement = con.prepareCall("call SP_D_Modelo(?);");
-            statement.setInt("MIdMarca", modelo.getId());
+            CallableStatement statement = con.prepareCall("call SP_D_Modelo(?)");
+            statement.setInt("MIdModelo", modelo.getIdModelo());
             statement.execute();
             JOptionPane.showMessageDialog(null, "Datos eliminados correntamente");
             con.close();
@@ -65,12 +65,12 @@ public class ModeloDao {
      public ArrayList<Modelo> MostrarModelos() {
         var listado = new ArrayList<Modelo>();
         try {
-            CallableStatement statement = con.prepareCall("call SP_S_Modelo;");
+            CallableStatement statement = con.prepareCall("call SP_S_Modelo()");
             ResultSet res = statement.executeQuery();
             while (res.next()) {
                 Modelo model= new Modelo();
                 model.setId(res.getInt("idModelo"));
-                model.setNombre(res.getString("Nombre"));
+                model.setNombreModelo(res.getString("Nombre"));
 
                 listado.add(model);
             }

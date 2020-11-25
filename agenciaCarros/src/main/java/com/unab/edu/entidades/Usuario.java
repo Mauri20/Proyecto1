@@ -20,6 +20,7 @@ public class Usuario extends Empleado {
     private String Usuario;
     private String Pass;
     private String Tipo;
+   
     
     
 }

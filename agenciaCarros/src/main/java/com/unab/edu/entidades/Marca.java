@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package com.unab.edu.entidades;
-import lombok.Data;
+import lombok.*;
 /**
  *
  * @author Roberto
@@ -12,5 +12,5 @@ import lombok.Data;
 @Data
 public class Marca {
     private int Id;
-    private String Nombre;
+    private String NombreMarca;
 }

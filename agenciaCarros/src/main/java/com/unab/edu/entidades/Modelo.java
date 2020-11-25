@@ -5,14 +5,15 @@
  */
 package com.unab.edu.entidades;
 
-import lombok.Data;
+import lombok.*;
 
 /**
  *
  * @author Roberto
  */
 @Data
-public class Modelo {
-    private int Id;
-    private String Nombre;
+@EqualsAndHashCode(callSuper=false)
+public class Modelo extends Marca {
+    private int IdModelo;
+    private String NombreModelo;
 }
