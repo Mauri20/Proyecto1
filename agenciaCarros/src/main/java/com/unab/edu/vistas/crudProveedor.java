@@ -5,7 +5,11 @@
  */
 package com.unab.edu.vistas;
 
+import com.unab.edu.dao.MarcaDao;
+import com.unab.edu.entidades.Marca;
 import com.unab.edu.entidades.Tablas;
+import java.util.ArrayList;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -20,6 +24,8 @@ public class crudProveedor extends javax.swing.JFrame {
     /**
      * Creates new form crudProveedor
      */
+    Marca marc;
+
     public crudProveedor() {
         initComponents();
         setLocationRelativeTo(this);
@@ -32,14 +38,35 @@ public class crudProveedor extends javax.swing.JFrame {
         //Tabla de Listado2
         Tablas.removeBackground(tbMarcas2, jScrollPane4);
         Tablas.resizeColumnWidth(tbMarcas2, 26, 81);
-        Titulos(tbMarcas);
-        Titulos(tbMarcas2);
+        
+        DisplayMarcas();
     }
-    void Titulos(JTable table) {
-        String TITULOS[] = {"#", "NOMBRE", "ID"};
-        DefaultTableModel modeloTabla = new DefaultTableModel(null, TITULOS);
-        table.setModel(modeloTabla);
+
+    
+
+    String ValueMember[];
+    int contador = 1;
+
+    void DisplayMarcas() {
+        DefaultComboBoxModel cbodefault = new DefaultComboBoxModel();
+        MarcaDao mark = new MarcaDao();
+        ArrayList<Marca> marcs = mark.MostrarMarcas();
+        ValueMember = new String[marcs.size() + 1];
+
+        String filas[] = new String[5];
+        cbodefault.addElement("");
+        for (var iterarDatosMarca : marcs) {
+
+            filas[0] = String.valueOf(iterarDatosMarca.getId());
+            filas[1] = iterarDatosMarca.getNombreMarca();
+            ValueMember[contador] = filas[0];
+            cbodefault.addElement(filas[1]);
+            contador++;
+
+        }
+        cboMarcas.setModel(cbodefault);
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -73,11 +100,11 @@ public class crudProveedor extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         tbMarcas = new javax.swing.JTable();
         jLabel11 = new javax.swing.JLabel();
-        cboMarcas = new javax.swing.JComboBox<>();
         btnAdd = new javax.swing.JButton();
         btnGuardar = new javax.swing.JButton();
         btnElminar = new javax.swing.JButton();
         btnLimpiar = new javax.swing.JButton();
+        cboMarcas = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
@@ -171,11 +198,13 @@ public class crudProveedor extends javax.swing.JFrame {
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("Marcas:");
 
-        cboMarcas.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        cboMarcas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         btnAdd.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         btnAdd.setText("+");
+        btnAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddActionPerformed(evt);
+            }
+        });
 
         btnGuardar.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         btnGuardar.setText("Guardar");
@@ -185,6 +214,8 @@ public class crudProveedor extends javax.swing.JFrame {
 
         btnLimpiar.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         btnLimpiar.setText("Limpiar");
+
+        cboMarcas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -220,8 +251,8 @@ public class crudProveedor extends javax.swing.JFrame {
                     .addComponent(jLabel5)
                     .addComponent(jLabel11)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(cboMarcas, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addComponent(cboMarcas, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnAdd)))
                 .addGap(23, 23, 23))
             .addGroup(jPanel4Layout.createSequentialGroup()
@@ -242,8 +273,8 @@ public class crudProveedor extends javax.swing.JFrame {
                         .addGroup(jPanel4Layout.createSequentialGroup()
                             .addComponent(jLabel5)
                             .addGap(10, 10, 10)
-                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(cboMarcas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(cboMarcas, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(btnAdd)))
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
                             .addComponent(jLabel4)
@@ -401,7 +432,9 @@ public class crudProveedor extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 862, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -410,6 +443,15 @@ public class crudProveedor extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+        // TODO add your handling code here:
+//        DefaultTableModel modeloTabla = new DefaultTableModel();
+//        cboMarcas.add(Integer.parseInt(ValueMember[cboMarcas.getSelectedIndex()]));
+        String TITULOS[] = {"#", "NOMBRE", "ID"};
+        DefaultTableModel modeloTabla = new DefaultTableModel(null, TITULOS);
+//        cuentausuar.setIdUsuario(Integer.parseInt(ValueMember[cboMarcas.getSelectedIndex()]));
+    }//GEN-LAST:event_btnAddActionPerformed
 
     /**
      * @param args the command line arguments

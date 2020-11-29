@@ -41,6 +41,7 @@ com\unab\edu\dao\UsuarioDao.class
 com\unab\edu\vistas\crudUsuario$3.class
 com\unab\edu\vistas\crudUsuario.class
 com\unab\edu\vistas\crudModel$2.class
+com\unab\edu\vistas\crudProveedor$2.class
 com\unab\edu\vistas\Ventas.class
 com\unab\edu\vistas\crudMarca$2.class
 com\unab\edu\entidades\Venta.class
