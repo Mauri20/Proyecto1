@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 C:\Users\Elmer Cardoza\OneDrive\Documentos\GitHub\Proyecto1\agenciaCarros\src\main\java\com\unab\edu\dao\ModeloDao.java
 C:\Users\Elmer Cardoza\OneDrive\Documentos\GitHub\Proyecto1\agenciaCarros\src\main\java\com\unab\edu\vistas\crudMarca.java
 C:\Users\Elmer Cardoza\OneDrive\Documentos\GitHub\Proyecto1\agenciaCarros\src\main\java\com\unab\edu\entidades\Modelo.java
@@ -19,3 +20,23 @@ C:\Users\Elmer Cardoza\OneDrive\Documentos\GitHub\Proyecto1\agenciaCarros\src\ma
 C:\Users\Elmer Cardoza\OneDrive\Documentos\GitHub\Proyecto1\agenciaCarros\src\main\java\com\unab\edu\vistas\crudUsuario.java
 C:\Users\Elmer Cardoza\OneDrive\Documentos\GitHub\Proyecto1\agenciaCarros\src\main\java\com\unab\edu\entidades\Empleado.java
 C:\Users\Elmer Cardoza\OneDrive\Documentos\GitHub\Proyecto1\agenciaCarros\src\main\java\com\unab\edu\entidades\Tablas.java
+=======
+C:\Users\Mauricio\Documents\GitHub\Proyecto1\agenciaCarros\src\main\java\com\unab\edu\vistas\crudProveedor.java
+C:\Users\Mauricio\Documents\GitHub\Proyecto1\agenciaCarros\src\main\java\com\unab\edu\vistas\crudModel.java
+C:\Users\Mauricio\Documents\GitHub\Proyecto1\agenciaCarros\src\main\java\com\unab\edu\entidades\Tablas.java
+C:\Users\Mauricio\Documents\GitHub\Proyecto1\agenciaCarros\src\main\java\com\unab\edu\entidades\Marca.java
+C:\Users\Mauricio\Documents\GitHub\Proyecto1\agenciaCarros\src\main\java\com\unab\edu\entidades\Usuario.java
+C:\Users\Mauricio\Documents\GitHub\Proyecto1\agenciaCarros\src\main\java\com\unab\edu\dao\EmpleadoDao.java
+C:\Users\Mauricio\Documents\GitHub\Proyecto1\agenciaCarros\src\main\java\com\unab\edu\vistas\Ventas.java
+C:\Users\Mauricio\Documents\GitHub\Proyecto1\agenciaCarros\src\main\java\com\unab\edu\dao\MarcaDao.java
+C:\Users\Mauricio\Documents\GitHub\Proyecto1\agenciaCarros\src\main\java\com\unab\edu\vistas\crudEmpleado.java
+C:\Users\Mauricio\Documents\GitHub\Proyecto1\agenciaCarros\src\main\java\com\unab\edu\dao\ModeloDao.java
+C:\Users\Mauricio\Documents\GitHub\Proyecto1\agenciaCarros\src\main\java\com\unab\edu\entidades\Modelo.java
+C:\Users\Mauricio\Documents\GitHub\Proyecto1\agenciaCarros\src\main\java\com\unab\edu\conexion\Conexion.java
+C:\Users\Mauricio\Documents\GitHub\Proyecto1\agenciaCarros\src\main\java\com\unab\edu\vistas\crudUsuario.java
+C:\Users\Mauricio\Documents\GitHub\Proyecto1\agenciaCarros\src\main\java\com\unab\edu\dao\UsuarioDao.java
+C:\Users\Mauricio\Documents\GitHub\Proyecto1\agenciaCarros\src\main\java\com\unab\edu\entidades\Empleado.java
+C:\Users\Mauricio\Documents\GitHub\Proyecto1\agenciaCarros\src\main\java\com\unab\edu\vistas\crudMarca.java
+C:\Users\Mauricio\Documents\GitHub\Proyecto1\agenciaCarros\src\main\java\com\unab\edu\entidades\Venta.java
+C:\Users\Mauricio\Documents\GitHub\Proyecto1\agenciaCarros\src\main\java\com\unab\edu\vistas\Login.java
+>>>>>>> Stashed changes
