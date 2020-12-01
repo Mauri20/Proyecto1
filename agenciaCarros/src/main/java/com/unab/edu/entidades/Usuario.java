@@ -19,7 +19,7 @@ public class Usuario extends Empleado {
     private int idUsuario;
     private String Usuario;
     private String Pass;
-    private String Tipo;
+    private int Tipo;
    
     
     

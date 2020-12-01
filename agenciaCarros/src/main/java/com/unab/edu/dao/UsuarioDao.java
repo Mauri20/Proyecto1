@@ -28,7 +28,7 @@ public class UsuarioDao {
             
             statement.setString("pUsuario", usuario.getUsuario());
             statement.setString("pPass", usuario.getPass());
-            statement.setString("pTipo", usuario.getTipo());
+            statement.setInt("pTipo", usuario.getTipo());
             statement.setInt("pId", usuario.getId());                      
     
             statement.execute();
@@ -49,7 +49,7 @@ public class UsuarioDao {
             statement.setInt("pIdusu", usuario.getIdUsuario());  
             statement.setString("pUsuario", usuario.getUsuario());
             statement.setString("pPass", usuario.getPass());
-            statement.setString("pTipo", usuario.getTipo());
+            statement.setInt("pTipo", usuario.getTipo());
             statement.setInt("pId", usuario.getId());  
            
             statement.execute();
@@ -94,7 +94,7 @@ public class UsuarioDao {
                 usua.setIdUsuario(us.getInt("idUsu"));
                 usua.setUsuario(us.getString("Usuario"));
                 usua.setPass(us.getString("Pass"));
-                usua.setTipo(us.getString("Tipo"));
+                usua.setTipo(us.getInt("Tipo"));
                
                 
                 
@@ -105,6 +105,25 @@ public class UsuarioDao {
         }
 
         return listado;
+    }
+     public Usuario Login(Usuario user) {
+        Usuario usu = new Usuario();
+        try {
+            CallableStatement statement = con.prepareCall("call sp_s_Login(?,?,?);");
+            statement.setString("pUsuario", user.getUsuario());
+            statement.setString("pPass", user.getPass());
+            statement.setInt("pTipo", user.getTipo());
+            ResultSet res = statement.executeQuery();
+            while (res.next()) {
+                usu.setIdUsuario(res.getInt("idUsuario"));
+                usu.setUsuario(res.getString("Usuario"));
+                usu.setPass(res.getString("PassWord"));
+                usu.setTipo(res.getInt("tipoUsuario"));
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "No se encontró el usuario" + e);
+        }
+        return usu;
     }
     
     
