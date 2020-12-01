@@ -252,15 +252,15 @@ public class crudModel extends javax.swing.JFrame {
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         try {
-            ModeloDao Estudiantes = new ModeloDao();
-            Modelo Estudiante = new Modelo();
-            Estudiantes.eliminarModelo(Estudiante);
+            ModeloDao Modelos = new ModeloDao();
+            Modelo Modelo = new Modelo();
+            Modelos.eliminarModelo(Modelo);
             MostrarTablaModelo();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error, verifique los datos");
         }
         btnLimpiar.doClick();
-        MostrarTablaModelo();
+        
 
     }//GEN-LAST:event_btnEliminarActionPerformed
 
