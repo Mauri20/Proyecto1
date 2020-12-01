@@ -109,7 +109,7 @@ public class UsuarioDao {
      public Usuario Login(Usuario user) {
         Usuario usu = new Usuario();
         try {
-            CallableStatement statement = con.prepareCall("call sp_s_Login(?,?,?);");
+            CallableStatement statement = con.prepareCall("call sp_s_Ingresar(?,?,?);");
             statement.setString("pUsuario", user.getUsuario());
             statement.setString("pPass", user.getPass());
             statement.setInt("pTipo", user.getTipo());
@@ -117,8 +117,8 @@ public class UsuarioDao {
             while (res.next()) {
                 usu.setIdUsuario(res.getInt("idUsuario"));
                 usu.setUsuario(res.getString("Usuario"));
-                usu.setPass(res.getString("PassWord"));
-                usu.setTipo(res.getInt("tipoUsuario"));
+                usu.setPass(res.getString("Pass"));
+                usu.setTipo(res.getInt("Tipo"));
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "No se encontró el usuario" + e);

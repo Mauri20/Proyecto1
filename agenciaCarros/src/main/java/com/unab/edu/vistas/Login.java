@@ -190,9 +190,9 @@ public class Login extends javax.swing.JFrame {
                 Usuario user= new Usuario();
                 user=UsuDao.Login(usu);
                 if(user.getUsuario()!=null){
-                    JOptionPane.showMessageDialog(null, "Welcome " + user.getUsuario());
+                    JOptionPane.showMessageDialog(null, "Bienvenido " + user.getUsuario());
                 }else{
-                    JOptionPane.showMessageDialog(null, "No se encontró el usuario");
+                    JOptionPane.showMessageDialog(null, "No se encontró este usuario en el sistema, Por favor vuelva a intentarlo");
                 }
                 usuar=user;
                 if (user.getTipo()== 1) {
@@ -208,11 +208,11 @@ public class Login extends javax.swing.JFrame {
                     this.hide();
                 }
             } else {
-                JOptionPane.showMessageDialog(null, "llena los campos");
+                JOptionPane.showMessageDialog(null, "llena todos los campos");
             }
         } else {
 
-            JOptionPane.showMessageDialog(null, "llena los campos");
+            JOptionPane.showMessageDialog(null, "llena todos los campos");
         }
     }//GEN-LAST:event_btnIngresarActionPerformed
 
