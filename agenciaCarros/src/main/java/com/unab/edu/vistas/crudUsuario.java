@@ -70,7 +70,7 @@ public class crudUsuario extends javax.swing.JFrame {
             filas[1] = String.valueOf(iterarDatos.getId());
             filas[2] = iterarDatos.getUsuario();
             filas[3] = iterarDatos.getPass();
-            filas[4] = iterarDatos.getTipo();
+            filas[4] = String.valueOf(iterarDatos.getTipo());
            
             
             modelTabla.addRow(filas);
