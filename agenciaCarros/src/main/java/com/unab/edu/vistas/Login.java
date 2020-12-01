@@ -21,7 +21,8 @@ import javax.swing.JPanel;
 public class Login extends javax.swing.JFrame {
 
     public static Usuario usuar;
-
+    int opcion = 0;
+    
     /**
      * Creates new form Login
      */
@@ -178,7 +179,6 @@ public class Login extends javax.swing.JFrame {
         Usuario usu = new Usuario();
         usu.setUsuario(txtUsuario.getText());
         usu.setPass(txtPass.getText());
-        int opcion = 0;
         if (!usu.getUsuario().isEmpty() && !usu.getPass().isEmpty()) {
             if (OpcUsu.isSelected()) {
                 opcion = 2;
@@ -186,7 +186,8 @@ public class Login extends javax.swing.JFrame {
                 opcion = 1;
             }
             if (opcion != 0) {
-                usu.setTipo(opcion);
+                String op = String.valueOf(opcion);
+                usu.setTipo(op);
                 Usuario user= new Usuario();
                 user=UsuDao.Login(usu);
                 if(user.getUsuario()!=null){
@@ -195,12 +196,12 @@ public class Login extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "No se encontró este usuario en el sistema, Por favor vuelva a intentarlo");
                 }
                 usuar=user;
-                if (user.getTipo()== 1) {
+                if (Integer.parseInt(user.getTipo())== 1) {
                     
                     crudMenuAdmin formAbonos = new crudMenuAdmin();
                     formAbonos.setVisible(true);
                     this.hide();
-                } else if(user.getTipo() == 2){
+                } else if(Integer.parseInt(user.getTipo()) == 2){
                     
                     
                     crudMenuUsuario formCargos = new crudMenuUsuario();
