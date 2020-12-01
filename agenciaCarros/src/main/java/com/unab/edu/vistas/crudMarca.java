@@ -56,6 +56,7 @@ public class crudMarca extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         txtIdMarca = new javax.swing.JTextField();
         btnLimpiar = new javax.swing.JButton();
+        lblMenu = new javax.swing.JLabel();
         jPanel2 = new FondoPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tb_Marca = new javax.swing.JTable();
@@ -98,6 +99,13 @@ public class crudMarca extends javax.swing.JFrame {
             }
         });
 
+        lblMenu.setText("Menu");
+        lblMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblMenuMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -119,20 +127,25 @@ public class crudMarca extends javax.swing.JFrame {
                         .addComponent(btnEliminar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 159, Short.MAX_VALUE)
                         .addComponent(btnLimpiar)
-                        .addGap(48, 48, 48))))
+                        .addGap(48, 48, 48))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(lblMenu)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(jLabel2)
+                .addContainerGap()
+                .addComponent(lblMenu)
                 .addGap(18, 18, 18)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtIdMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(60, 60, 60)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardar)
                     .addComponent(btnEliminar)
@@ -225,6 +238,12 @@ public class crudMarca extends javax.swing.JFrame {
         txtNombre.setText(null);
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
+    private void lblMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMenuMouseClicked
+        crudMenuAdmin menu = new crudMenuAdmin();
+        menu.setVisible(true);
+        this.hide();
+    }//GEN-LAST:event_lblMenuMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -269,6 +288,7 @@ public class crudMarca extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblMenu;
     private javax.swing.JTable tb_Marca;
     private javax.swing.JTabbedPane tb_Mostrar;
     private javax.swing.JTextField txtIdMarca;

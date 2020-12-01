@@ -89,6 +89,7 @@ public class crudModel extends javax.swing.JFrame {
         btnGuardar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
         btnLimpiar = new javax.swing.JButton();
+        lblMenu = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbModelo = new javax.swing.JTable();
@@ -130,6 +131,13 @@ public class crudModel extends javax.swing.JFrame {
             }
         });
 
+        lblMenu.setText("Menu");
+        lblMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblMenuMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -150,15 +158,18 @@ public class crudModel extends javax.swing.JFrame {
                             .addComponent(txtId, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(cbMarca, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(98, 98, 98)
-                        .addComponent(btnLimpiar)))
+                        .addComponent(btnLimpiar))
+                    .addComponent(lblMenu))
                 .addContainerGap(358, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
+                .addGap(6, 6, 6)
+                .addComponent(lblMenu)
+                .addGap(13, 13, 13)
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cbMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34)
                 .addComponent(jLabel2)
@@ -290,6 +301,12 @@ public class crudModel extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_tbModeloMouseClicked
 
+    private void lblMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMenuMouseClicked
+        crudMenuAdmin menu = new crudMenuAdmin();
+        menu.setVisible(true);
+        this.hide();
+    }//GEN-LAST:event_lblMenuMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -336,6 +353,7 @@ public class crudModel extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblMenu;
     private javax.swing.JTable tbModelo;
     private javax.swing.JTabbedPane tbMostrarDatos;
     private javax.swing.JTextField txtId;
