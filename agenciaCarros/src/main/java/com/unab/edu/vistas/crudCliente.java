@@ -515,6 +515,7 @@ public class crudCliente extends javax.swing.JFrame {
 
     private void lblMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMenuMouseClicked
         
+                
                 if (Integer.parseInt(usuar.getTipo())== 1) {
                     
                     crudMenuAdmin formAbonos = new crudMenuAdmin();
