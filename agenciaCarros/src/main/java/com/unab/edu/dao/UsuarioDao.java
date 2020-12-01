@@ -109,16 +109,16 @@ public class UsuarioDao {
      public Usuario Login(Usuario user) {
         Usuario usu = new Usuario();
         try {
-            CallableStatement statement = con.prepareCall("call sp_s_Ingresar(?,?,?);");
+            CallableStatement statement = con.prepareCall("call SP_S_Ingresar(?,?,?);");
             statement.setString("pUsuario", user.getUsuario());
             statement.setString("pPass", user.getPass());
             statement.setInt("pTipo", user.getTipo());
-            ResultSet res = statement.executeQuery();
-            while (res.next()) {
-                usu.setIdUsuario(res.getInt("idUsuario"));
-                usu.setUsuario(res.getString("Usuario"));
-                usu.setPass(res.getString("Pass"));
-                usu.setTipo(res.getInt("Tipo"));
+            ResultSet result = statement.executeQuery();
+            while (result.next()) {
+                usu.setIdUsuario(result.getInt("idUsuario"));
+                usu.setUsuario(result.getString("Usuario"));
+                usu.setPass(result.getString("Pass"));
+                usu.setTipo(result.getInt("Tipo"));
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "No se encontró el usuario" + e);
