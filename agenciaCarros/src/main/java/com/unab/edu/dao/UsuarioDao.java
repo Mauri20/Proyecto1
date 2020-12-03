@@ -1,4 +1,6 @@
 
+
+
 package com.unab.edu.dao;
 import com.unab.edu.conexion.Conexion;
 import com.unab.edu.entidades.Usuario;
@@ -8,32 +10,26 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
+
 /**
  *
  * @author kevin
  */
 public class UsuarioDao {
     
-    //CONEXION A LA BASE DE DATOS 
     Conexion cn = new Conexion();
     Connection con = cn.retornarConexion();
     
     
-    //CONSULTAS A LA BASE DE DATOS 
-    
-    
-    
-    //SP_I_USUARIO---COMPLETADO!
+    //Consultas a la base de datos 
     public void agregarUsuario(Usuario usuario){
       try {
-            CallableStatement statement = con.prepareCall("call SP_I_Usuario(?,?,?,?,?)");
+            CallableStatement statement = con.prepareCall("call SP_I_Usuario(?,?,?,?)");
             
-            statement.setInt("pIdusu", usuario.getIdUsuario());
             statement.setString("pUsuario", usuario.getUsuario());
             statement.setString("pPass", usuario.getPass());
             statement.setString("pTipo", usuario.getTipo());
-            statement.setInt("pId", usuario.getId());  
-            
+            statement.setInt("pId", usuario.getId());                      
     
             statement.execute();
             con.close();
@@ -46,9 +42,6 @@ public class UsuarioDao {
     
     
     
-    
-    
-    //SP_U_USUARIO---COMPLETADO!
     public void actualizarUsuario(Usuario usuario) {
         try {
             CallableStatement statement = con.prepareCall("call SP_U_Usuario(?,?,?,?,?)");
@@ -69,12 +62,9 @@ public class UsuarioDao {
     }
     
     
-   
     
     
-    //SP_D_USUARIO---COMPLETADO!
     public void eliminarUsuario(Usuario usuario) {
-        
          try {
             CallableStatement statement = con.prepareCall("call SP_D_Usuario(?);");
             
@@ -91,9 +81,6 @@ public class UsuarioDao {
     
     
     
-    
-    
-    //SP_S_USUARIO---COMPLETADO!
      public ArrayList<Usuario> MostrarUsuario() {
         var listado = new ArrayList<Usuario>();
         
@@ -102,48 +89,22 @@ public class UsuarioDao {
             ResultSet us = statement.executeQuery();
             
             while (us.next()) {
-                
                 Usuario usua = new Usuario();
                 
-                usua.setIdUsuario(us.getInt("idUsuario"));
+                usua.setIdUsuario(us.getInt("idUsu"));
                 usua.setUsuario(us.getString("Usuario"));
                 usua.setPass(us.getString("Pass"));
                 usua.setTipo(us.getString("Tipo"));
-                usua.setId(us.getInt("idEmpleado"));
-                              
+               
+                
+                
                 listado.add(usua);
             }
-            
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "DATOS DE USUARIO NO CARGADOS " + e);
         }
 
         return listado;
-    }
-     
-     
-     
-     
-     
-     //SP_S_INGRESAR---COMPLETADO!
-     public Usuario Login(Usuario user) {
-        Usuario usu = new Usuario();
-        try {
-            CallableStatement statement = con.prepareCall("call SP_S_Ingresar(?,?,?);");
-            statement.setString("pUsuario", user.getUsuario());
-            statement.setString("pPass", user.getPass());
-            statement.setString("pTipo", user.getTipo());
-            ResultSet result = statement.executeQuery();
-            while (result.next()) {
-                usu.setIdUsuario(result.getInt("idUsuario"));
-                usu.setUsuario(result.getString("Usuario"));
-                usu.setPass(result.getString("Pass"));
-                usu.setTipo(result.getString("Tipo"));
-            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "No se encontró el usuario" + e);
-        }
-        return usu;
     }
     
     
