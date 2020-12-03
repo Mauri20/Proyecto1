@@ -39,6 +39,11 @@ com\unab\edu\dao\ClienteDao.class
 com\unab\edu\vistas\crudUsuario$2.class
 com\unab\edu\entidades\Cliente.class
 com\unab\edu\entidades\Proveedor.class
+<<<<<<< Updated upstream
+=======
+com\unab\edu\vistas\crudMenuAdmin$2.class
+com\unab\edu\vistas\crudMenuUsuario$3.class
+>>>>>>> Stashed changes
 com\unab\edu\vistas\crudUsuario$6.class
 com\unab\edu\vistas\crudCliente$1.class
 com\unab\edu\vistas\crudProveedor$6.class
