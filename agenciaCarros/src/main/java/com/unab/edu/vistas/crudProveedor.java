@@ -6,10 +6,13 @@
 package com.unab.edu.vistas;
 
 import com.unab.edu.dao.MarcaDao;
+import com.unab.edu.dao.ProveedorDao;
 import com.unab.edu.entidades.Marca;
+import com.unab.edu.entidades.Proveedor;
 import com.unab.edu.entidades.Tablas;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -33,17 +36,62 @@ public class crudProveedor extends javax.swing.JFrame {
         Tablas.removeBackground(tbMarcas, jScrollPane2);
         Tablas.resizeColumnWidth(tbMarcas, 26, 81);
         //Tabla de Listado1
-        Tablas.removeBackground(tbProveedores, jScrollPane3);
-        Tablas.resizeColumnWidth(tbProveedores, 26, 81);
+        Tablas.removeBackground(TablaProv, scrollProvee);
+        Tablas.resizeColumnWidth(TablaProv, 21, 81);
         //Tabla de Listado2
         Tablas.removeBackground(tbMarcas2, jScrollPane4);
         Tablas.resizeColumnWidth(tbMarcas2, 26, 81);
-        
+        txtIdProveedor.setVisible(false);
+
+        MostrarProveedores();
+
         DisplayMarcas();
+
+        String TITULOS[] = {"NOMBRE", "ID"};
+        DefaultTableModel modelo = new DefaultTableModel(null, TITULOS);
+        tbMarcas.setModel(modelo);
+        //Para quitar la edicion del Jtable
+        TablaProv.setDefaultEditor(Object.class, null);
+
     }
 
-    
+    void MostrarMarcas(int IdProveedor) {
+        String TITULOS[] = {"NOMBRE", "ID"};
+        DefaultTableModel modeloTabla = new DefaultTableModel(null, TITULOS);
+        ProveedorDao provDao = new ProveedorDao();
+        var listaEmpleados = provDao.Marcas(IdProveedor);
+        String filas[] = new String[2];
+        for (var iterarDatos : listaEmpleados) {
+            filas[1] = String.valueOf(iterarDatos.getId());
+            filas[0] = iterarDatos.getNombreMarca();
+            modeloTabla.addRow(filas);
+        }
+        tbMarcas2.setModel(modeloTabla);
+    }
 
+    void MostrarProveedores() {
+        String TITULOS[] = {"ID", "NOMBRE", "CONTACTO", "DIRECCION", "TELÉFONO", "CORREO", "NIT", "NRC"};
+        DefaultTableModel modeloTabla = new DefaultTableModel(null, TITULOS);
+        ProveedorDao provDao = new ProveedorDao();
+        var listaEmpleados = provDao.mostrarEmpleados();
+        String filas[] = new String[8];
+
+        for (var iterarDatos : listaEmpleados) {
+            filas[0] = String.valueOf(iterarDatos.getId());
+            filas[1] = iterarDatos.getNombre();
+            filas[2] = iterarDatos.getContacto();
+            filas[3] = iterarDatos.getDireccion();
+            filas[4] = iterarDatos.getTelefono();
+            filas[5] = iterarDatos.getCorreo();
+            filas[6] = iterarDatos.getNit();
+            filas[7] = iterarDatos.getNrc();
+            modeloTabla.addRow(filas);
+        }
+        TablaProv.setModel(modeloTabla);
+
+        int IdProveedor = Integer.parseInt(String.valueOf(TablaProv.getValueAt(0, 0)));
+        MostrarMarcas(IdProveedor);
+    }
     String ValueMember[];
     int contador = 1;
 
@@ -62,9 +110,25 @@ public class crudProveedor extends javax.swing.JFrame {
             ValueMember[contador] = filas[0];
             cbodefault.addElement(filas[1]);
             contador++;
-
         }
         cboMarcas.setModel(cbodefault);
+
+    }
+
+    void Limpiar() {
+        txtIdProveedor.setText("0");
+        txtNombre.setText("");
+        txtContacto.setText("");
+        txtDireccion.setText("");
+        txtTelefono.setText("");
+        txtCorreo.setText("");
+        txtNit.setText("");
+        txtNrc.setText("");
+        DefaultTableModel model = (DefaultTableModel) tbMarcas.getModel();
+
+        for (int i = model.getRowCount() - 1; i >= 0; i--) {
+            model.removeRow(i);
+        }
     }
 
     /**
@@ -76,11 +140,11 @@ public class crudProveedor extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTabbedPane1 = new javax.swing.JTabbedPane();
+        Menu = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        txtIdProveedor = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
@@ -105,28 +169,30 @@ public class crudProveedor extends javax.swing.JFrame {
         btnElminar = new javax.swing.JButton();
         btnLimpiar = new javax.swing.JButton();
         cboMarcas = new javax.swing.JComboBox<>();
+        btnRemove = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        tbProveedores = new javax.swing.JTable();
+        scrollProvee = new javax.swing.JScrollPane();
+        TablaProv = new javax.swing.JTable();
         jScrollPane4 = new javax.swing.JScrollPane();
         tbMarcas2 = new javax.swing.JTable();
+        btnLlevarDatos = new javax.swing.JButton();
         jLabel22 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Proveedor");
 
-        jTabbedPane1.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        Menu.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
 
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel4.setOpaque(false);
 
-        jLabel2.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("idProveedor");
+        txtIdProveedor.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        txtIdProveedor.setForeground(new java.awt.Color(255, 255, 255));
+        txtIdProveedor.setText("0");
 
         jLabel3.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -180,6 +246,7 @@ public class crudProveedor extends javax.swing.JFrame {
         jScrollPane2.setOpaque(false);
 
         tbMarcas.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        tbMarcas.setForeground(new java.awt.Color(255, 255, 255));
         tbMarcas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -191,7 +258,10 @@ public class crudProveedor extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tbMarcas.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_NEXT_COLUMN);
+        tbMarcas.setGridColor(new java.awt.Color(255, 255, 255));
         tbMarcas.setOpaque(false);
+        tbMarcas.setShowGrid(false);
         jScrollPane2.setViewportView(tbMarcas);
 
         jLabel11.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
@@ -208,14 +278,37 @@ public class crudProveedor extends javax.swing.JFrame {
 
         btnGuardar.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         btnGuardar.setText("Guardar");
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
 
         btnElminar.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         btnElminar.setText("Eliminar");
+        btnElminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnElminarActionPerformed(evt);
+            }
+        });
 
         btnLimpiar.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         btnLimpiar.setText("Limpiar");
+        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarActionPerformed(evt);
+            }
+        });
 
         cboMarcas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        btnRemove.setFont(new java.awt.Font("Verdana", 1, 24)); // NOI18N
+        btnRemove.setText("-");
+        btnRemove.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRemoveActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -231,7 +324,7 @@ public class crudProveedor extends javax.swing.JFrame {
                         .addGroup(jPanel4Layout.createSequentialGroup()
                             .addComponent(jLabel6)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel2)
+                            .addComponent(txtIdProveedor)
                             .addGap(39, 39, 39))
                         .addComponent(jScrollPane1))
                     .addComponent(jLabel8))
@@ -247,13 +340,16 @@ public class crudProveedor extends javax.swing.JFrame {
                     .addComponent(jLabel9))
                 .addGap(36, 36, 36)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5)
-                    .addComponent(jLabel11)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(cboMarcas, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cboMarcas, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel11))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnAdd)))
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnRemove)
+                            .addComponent(btnAdd))))
                 .addGap(23, 23, 23))
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(100, 100, 100)
@@ -284,19 +380,25 @@ public class crudProveedor extends javax.swing.JFrame {
                         .addComponent(jLabel3)
                         .addGap(11, 11, 11)
                         .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(0, 17, Short.MAX_VALUE)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel6)
-                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel11)
-                                .addComponent(jLabel7)))
-                        .addGap(18, 18, 18)))
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGap(0, 29, Short.MAX_VALUE)
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel6)
+                                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jLabel11)
+                                        .addComponent(jLabel7))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
+                                .addGap(2, 2, 2)
+                                .addComponent(txtIdProveedor)
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(btnRemove, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -347,16 +449,17 @@ public class crudProveedor extends javax.swing.JFrame {
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jTabbedPane1.addTab("DATOS", jPanel1);
+        Menu.addTab("DATOS", jPanel1);
 
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel6.setOpaque(false);
 
-        jScrollPane3.setOpaque(false);
+        scrollProvee.setOpaque(false);
 
-        tbProveedores.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        tbProveedores.setModel(new javax.swing.table.DefaultTableModel(
+        TablaProv.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        TablaProv.setForeground(new java.awt.Color(255, 255, 255));
+        TablaProv.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -367,12 +470,29 @@ public class crudProveedor extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        tbProveedores.setOpaque(false);
-        jScrollPane3.setViewportView(tbProveedores);
+        TablaProv.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
+        TablaProv.setGridColor(new java.awt.Color(255, 255, 255));
+        TablaProv.setOpaque(false);
+        TablaProv.setShowGrid(false);
+        TablaProv.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                TablaProvMouseDragged(evt);
+            }
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                TablaProvMouseMoved(evt);
+            }
+        });
+        TablaProv.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TablaProvMouseClicked(evt);
+            }
+        });
+        scrollProvee.setViewportView(TablaProv);
 
         jScrollPane4.setOpaque(false);
 
         tbMarcas2.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        tbMarcas2.setForeground(new java.awt.Color(255, 255, 255));
         tbMarcas2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -384,8 +504,18 @@ public class crudProveedor extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tbMarcas2.setGridColor(new java.awt.Color(255, 255, 255));
         tbMarcas2.setOpaque(false);
         jScrollPane4.setViewportView(tbMarcas2);
+
+        btnLlevarDatos.setBackground(new java.awt.Color(0, 0, 0));
+        btnLlevarDatos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/edition.png"))); // NOI18N
+        btnLlevarDatos.setOpaque(false);
+        btnLlevarDatos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLlevarDatosActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -393,18 +523,27 @@ public class crudProveedor extends javax.swing.JFrame {
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(19, 19, 19)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 637, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addComponent(scrollProvee, javax.swing.GroupLayout.PREFERRED_SIZE, 637, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(17, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnLlevarDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(68, 68, 68))))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(17, 17, 17)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(scrollProvee, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnLlevarDatos)))
                 .addContainerGap(14, Short.MAX_VALUE))
         );
 
@@ -426,19 +565,19 @@ public class crudProveedor extends javax.swing.JFrame {
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jTabbedPane1.addTab("LISTADO", jPanel2);
+        Menu.addTab("LISTADO", jPanel2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Menu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 438, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(Menu, javax.swing.GroupLayout.PREFERRED_SIZE, 438, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -446,12 +585,191 @@ public class crudProveedor extends javax.swing.JFrame {
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
-//        DefaultTableModel modeloTabla = new DefaultTableModel();
-//        cboMarcas.add(Integer.parseInt(ValueMember[cboMarcas.getSelectedIndex()]));
-        String TITULOS[] = {"#", "NOMBRE", "ID"};
-        DefaultTableModel modeloTabla = new DefaultTableModel(null, TITULOS);
-//        cuentausuar.setIdUsuario(Integer.parseInt(ValueMember[cboMarcas.getSelectedIndex()]));
+//        String TITULOS[] = {"#", "NOMBRE", "ID"};
+//        DefaultTableModel modelo = new DefaultTableModel(null, TITULOS);
+
+        DefaultTableModel modelo = (DefaultTableModel) tbMarcas.getModel();
+//        int filas = tbMarcas.getRowCount();
+//        for (int i = 0; filas > i; i++) {
+//            modelo.removeRow(0);
+//        }
+        //Sección 2
+        Object[] fila = new Object[2];
+
+        //Sección 3
+        fila[0] = cboMarcas.getSelectedItem();
+        int idMarcas = cboMarcas.getSelectedIndex();
+        fila[1] = ValueMember[idMarcas];
+
+        //Sección 4
+        modelo.addRow(fila);
+
+        //Sección 5
+        tbMarcas.setModel(modelo);
+
+
     }//GEN-LAST:event_btnAddActionPerformed
+
+    private void btnRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveActionPerformed
+        // TODO add your handling code here:
+
+        //Sección 1
+        DefaultTableModel model = (DefaultTableModel) tbMarcas.getModel();
+
+        //Sección 2
+        int a = tbMarcas.getSelectedRow();
+
+        //Sección 3
+        if (a < 0) {
+            JOptionPane.showMessageDialog(null, "Debe seleccionar una fila de la tabla");
+        } else {
+            //Sección 4
+            int confirmar = JOptionPane.showConfirmDialog(null, "Esta seguro que desea Eliminar el registro? ");
+            //Sección 5 
+            if (JOptionPane.OK_OPTION == confirmar) {
+                //Sección 6
+                model.removeRow(a);
+                //Sección 7
+//                JOptionPane.showMessageDialog(null, "Registro Eliminado");
+            }
+        }
+    }//GEN-LAST:event_btnRemoveActionPerformed
+
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        // TODO add your handling code here:
+        ProveedorDao provDao = new ProveedorDao();
+        Proveedor prov = new Proveedor();
+        prov.setId(Integer.parseInt(txtIdProveedor.getText()));
+        prov.setNombre(txtNombre.getText());
+        prov.setContacto(txtContacto.getText());
+        prov.setDireccion(txtDireccion.getText());
+        prov.setTelefono(txtTelefono.getText());
+        prov.setNit(txtNit.getText());
+        prov.setCorreo(txtCorreo.getText());
+        prov.setNrc(txtNrc.getText());
+        try {
+            //Probando guardar los datos de la tabla en un ArrayList
+            ArrayList<Marca> ListadoMarcas = new ArrayList<>();
+            //DefaultTableModel tableModel = (DefaultTableModel)tbMarcas.getModel();
+            int rows = tbMarcas.getRowCount();
+            for (int i = 0; i < rows; i++) {
+                Marca marca = new Marca();
+                marca.setNombreMarca(String.valueOf(tbMarcas.getValueAt(i, 0)));
+                marca.setId(Integer.parseInt(String.valueOf(tbMarcas.getValueAt(i, 1))));
+                ListadoMarcas.add(marca);
+            }
+            prov.setMarcas(ListadoMarcas);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Debe seleccionar Marcas");
+        }
+        //Validacion 
+        int datos = tbMarcas.getRowCount();
+        if (prov.getNombre().isEmpty() || prov.getContacto().isEmpty() || prov.getDireccion().isEmpty()
+                || prov.getTelefono().isEmpty() || prov.getNit().isEmpty() || prov.getCorreo().isEmpty()
+                || prov.getNrc().isEmpty() || datos == 0) {
+            JOptionPane.showMessageDialog(null, "Debe completar todos los Campos para continuar");
+        } else if (prov.getId() > 0) {
+            provDao.actualizarProveedor(prov);
+            MostrarProveedores();
+            Limpiar();
+            //JOptionPane.showMessageDialog(null, "Viniste a actualizar");
+        } else {
+            provDao.agregarProveedor(prov);
+            MostrarProveedores();
+            Limpiar();
+            //JOptionPane.showMessageDialog(null, "Viniste a Guardar");
+
+        }
+        //Codigo para recorrer el Array
+//        for(var iterar:Marcas){
+//            JOptionPane.showMessageDialog(null, iterar.getNombreMarca() + " y "+iterar.getId());
+//        }
+    }//GEN-LAST:event_btnGuardarActionPerformed
+
+    private void TablaProvMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaProvMouseDragged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TablaProvMouseDragged
+
+    private void TablaProvMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaProvMouseMoved
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TablaProvMouseMoved
+
+    private void TablaProvMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaProvMouseClicked
+        // TODO add your handling code here:
+        int fila = TablaProv.getSelectedRow();
+        int IdProveedor = Integer.parseInt(String.valueOf(TablaProv.getValueAt(fila, 0)));
+        MostrarMarcas(IdProveedor);
+    }//GEN-LAST:event_TablaProvMouseClicked
+
+    private void btnLlevarDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLlevarDatosActionPerformed
+        // TODO add your handling code here:
+        Menu.setSelectedIndex(Menu.indexOfComponent(jPanel1));
+        //Obtener la fila seleccionada
+        int fila = TablaProv.getSelectedRow();
+        //Capturando los datos de la fila seleccionada "ID", "NOMBRE", "CONTACTO", "DIRECCION", "TELÉFONO", "CORREO", "NIT", "NRC";
+        String Id = String.valueOf(TablaProv.getValueAt(fila, 0));
+        String Nombre = String.valueOf(TablaProv.getValueAt(fila, 1));
+        String Contacto = String.valueOf(TablaProv.getValueAt(fila, 2));
+        String Direccion = String.valueOf(TablaProv.getValueAt(fila, 3));
+        String Telefono = String.valueOf(TablaProv.getValueAt(fila, 4));
+        String Correo = String.valueOf(TablaProv.getValueAt(fila, 5));
+        String Nit = String.valueOf(TablaProv.getValueAt(fila, 6));
+        String Nrc = String.valueOf(TablaProv.getValueAt(fila, 7));
+
+        ArrayList<Marca> ListadoMarcas = new ArrayList<>();
+        //DefaultTableModel tableModel = (DefaultTableModel)tbMarcas.getModel();
+        int rows = tbMarcas2.getRowCount();
+        for (int i = 0; i < rows; i++) {
+            Marca marca = new Marca();
+            marca.setNombreMarca(String.valueOf(tbMarcas2.getValueAt(i, 0)));
+            marca.setId(Integer.parseInt(String.valueOf(tbMarcas2.getValueAt(i, 1))));
+            ListadoMarcas.add(marca);
+        }
+
+        //Agregando los datos al formulario
+        txtIdProveedor.setText(Id);
+        txtNombre.setText(Nombre);
+        txtContacto.setText(Contacto);
+        txtDireccion.setText(Direccion);
+        txtTelefono.setText(Telefono);
+        txtCorreo.setText(Correo);
+        txtNit.setText(Nit);
+        txtNrc.setText(Nrc);
+
+        for (var iterar : ListadoMarcas) {
+            DefaultTableModel modelo = (DefaultTableModel) tbMarcas.getModel();
+            //Sección 2
+            Object[] fila2 = new Object[2];
+            //Sección 3
+            fila2[0] = iterar.getNombreMarca();
+            fila2[1] = iterar.getId();
+            //Sección 4
+            modelo.addRow(fila2);
+            tbMarcas.setModel(modelo);
+        }
+    }//GEN-LAST:event_btnLlevarDatosActionPerformed
+
+    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+        // TODO add your handling code here:
+        Limpiar();
+    }//GEN-LAST:event_btnLimpiarActionPerformed
+
+    private void btnElminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnElminarActionPerformed
+        // TODO add your handling code here:
+        int idProveedor = Integer.parseInt(txtIdProveedor.getText());
+        if (idProveedor == 0) {
+            JOptionPane.showMessageDialog(null, "No ha seleccionado un Proveedor para proceder");
+        } else {
+            int confirmar = JOptionPane.showConfirmDialog(null, "Esta seguro que desea Eliminar el registro? ");
+            // 
+            if (JOptionPane.OK_OPTION == confirmar) {
+                ProveedorDao provDao = new ProveedorDao();
+                provDao.elimiarProveedor(idProveedor);
+                MostrarProveedores();
+                Limpiar();
+            }
+        }
+    }//GEN-LAST:event_btnElminarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -489,15 +807,18 @@ public class crudProveedor extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTabbedPane Menu;
+    private javax.swing.JTable TablaProv;
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnElminar;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnLimpiar;
+    private javax.swing.JButton btnLlevarDatos;
+    private javax.swing.JButton btnRemove;
     private javax.swing.JComboBox<String> cboMarcas;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -514,15 +835,14 @@ public class crudProveedor extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JScrollPane scrollProvee;
     private javax.swing.JTable tbMarcas;
     private javax.swing.JTable tbMarcas2;
-    private javax.swing.JTable tbProveedores;
     private javax.swing.JTextField txtContacto;
     private javax.swing.JTextField txtCorreo;
     private javax.swing.JTextArea txtDireccion;
+    private javax.swing.JLabel txtIdProveedor;
     private javax.swing.JTextField txtNit;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtNrc;
