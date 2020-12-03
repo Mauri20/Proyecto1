@@ -19,7 +19,10 @@ com\unab\edu\dao\EmpleadoDao.class
 com\unab\edu\entidades\Modelo.class
 com\unab\edu\vistas\crudCliente$3.class
 <<<<<<< HEAD
+<<<<<<< HEAD
 com\unab\edu\vistas\crudMenuAdmin$1.class
+=======
+>>>>>>> parent of 30393aa... Finalizacion de crudProveedor
 =======
 >>>>>>> parent of 30393aa... Finalizacion de crudProveedor
 com\unab\edu\vistas\crudUsuario$5.class
@@ -48,8 +51,11 @@ com\unab\edu\dao\ClienteDao.class
 com\unab\edu\vistas\crudUsuario$2.class
 com\unab\edu\entidades\Cliente.class
 <<<<<<< HEAD
+<<<<<<< HEAD
 com\unab\edu\vistas\crudMenuAdmin$2.class
 com\unab\edu\vistas\crudMenuUsuario$3.class
+=======
+>>>>>>> parent of 30393aa... Finalizacion de crudProveedor
 =======
 >>>>>>> parent of 30393aa... Finalizacion de crudProveedor
 com\unab\edu\vistas\crudUsuario$6.class
@@ -60,11 +66,14 @@ com\unab\edu\dao\UsuarioDao.class
 com\unab\edu\vistas\crudUsuario$3.class
 com\unab\edu\vistas\crudUsuario.class
 <<<<<<< HEAD
+<<<<<<< HEAD
 com\unab\edu\vistas\crudMenuAdmin$9.class
 com\unab\edu\vistas\crudProveedor$3.class
 com\unab\edu\vistas\Login$3.class
 com\unab\edu\vistas\crudMenuAdmin$6.class
 com\unab\edu\vistas\crudMenuUsuario$2.class
+=======
+>>>>>>> parent of 30393aa... Finalizacion de crudProveedor
 =======
 >>>>>>> parent of 30393aa... Finalizacion de crudProveedor
 com\unab\edu\vistas\crudModel$2.class

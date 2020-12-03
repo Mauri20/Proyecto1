@@ -219,6 +219,7 @@
                                               <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
+<<<<<<< HEAD
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
 >>>>>>> parent of 30393aa... Finalizacion de crudProveedor
                                   </Group>
@@ -231,6 +232,8 @@
                                               <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
+=======
+>>>>>>> parent of 30393aa... Finalizacion de crudProveedor
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
@@ -528,6 +531,7 @@
                       </AuxValues>
                     </Component>
 <<<<<<< HEAD
+<<<<<<< HEAD
                     <Component class="javax.swing.JLabel" name="lblMenu">
                       <Properties>
                         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -539,6 +543,8 @@
                         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lblMenuMouseClicked"/>
                       </Events>
                     </Component>
+=======
+>>>>>>> parent of 30393aa... Finalizacion de crudProveedor
 =======
 >>>>>>> parent of 30393aa... Finalizacion de crudProveedor
                   </SubComponents>

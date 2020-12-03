@@ -45,10 +45,13 @@ public class crudProveedor extends javax.swing.JFrame {
 
     
 
+<<<<<<< HEAD
 =======
 
     
 
+>>>>>>> parent of 30393aa... Finalizacion de crudProveedor
+=======
 >>>>>>> parent of 30393aa... Finalizacion de crudProveedor
     String ValueMember[];
     int contador = 1;
@@ -112,7 +115,10 @@ public class crudProveedor extends javax.swing.JFrame {
         btnLimpiar = new javax.swing.JButton();
         cboMarcas = new javax.swing.JComboBox<>();
 <<<<<<< HEAD
+<<<<<<< HEAD
         lblMenu = new javax.swing.JLabel();
+=======
+>>>>>>> parent of 30393aa... Finalizacion de crudProveedor
 =======
 >>>>>>> parent of 30393aa... Finalizacion de crudProveedor
         jLabel1 = new javax.swing.JLabel();
@@ -228,6 +234,7 @@ public class crudProveedor extends javax.swing.JFrame {
         cboMarcas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         lblMenu.setForeground(new java.awt.Color(255, 255, 255));
         lblMenu.setText("Menu");
         lblMenu.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -236,6 +243,8 @@ public class crudProveedor extends javax.swing.JFrame {
             }
         });
 
+=======
+>>>>>>> parent of 30393aa... Finalizacion de crudProveedor
 =======
 >>>>>>> parent of 30393aa... Finalizacion de crudProveedor
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -343,6 +352,9 @@ public class crudProveedor extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(0, 17, Short.MAX_VALUE)
+<<<<<<< HEAD
+>>>>>>> parent of 30393aa... Finalizacion de crudProveedor
+=======
 >>>>>>> parent of 30393aa... Finalizacion de crudProveedor
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel6)
@@ -507,12 +519,15 @@ public class crudProveedor extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAddActionPerformed
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     private void lblMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMenuMouseClicked
         crudMenuAdmin menu = new crudMenuAdmin();
         menu.setVisible(true);
         this.hide();
     }//GEN-LAST:event_lblMenuMouseClicked
 
+=======
+>>>>>>> parent of 30393aa... Finalizacion de crudProveedor
 =======
 >>>>>>> parent of 30393aa... Finalizacion de crudProveedor
     /**
@@ -580,7 +595,10 @@ public class crudProveedor extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTabbedPane jTabbedPane1;
 <<<<<<< HEAD
+<<<<<<< HEAD
     private javax.swing.JLabel lblMenu;
+=======
+>>>>>>> parent of 30393aa... Finalizacion de crudProveedor
 =======
 >>>>>>> parent of 30393aa... Finalizacion de crudProveedor
     private javax.swing.JTable tbMarcas;
