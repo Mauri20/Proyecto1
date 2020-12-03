@@ -41,9 +41,15 @@ public class crudProveedor extends javax.swing.JFrame {
         
         DisplayMarcas();
     }
+<<<<<<< HEAD
 
     
 
+=======
+
+    
+
+>>>>>>> parent of 30393aa... Finalizacion de crudProveedor
     String ValueMember[];
     int contador = 1;
 
@@ -105,7 +111,10 @@ public class crudProveedor extends javax.swing.JFrame {
         btnElminar = new javax.swing.JButton();
         btnLimpiar = new javax.swing.JButton();
         cboMarcas = new javax.swing.JComboBox<>();
+<<<<<<< HEAD
         lblMenu = new javax.swing.JLabel();
+=======
+>>>>>>> parent of 30393aa... Finalizacion de crudProveedor
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
@@ -218,6 +227,7 @@ public class crudProveedor extends javax.swing.JFrame {
 
         cboMarcas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+<<<<<<< HEAD
         lblMenu.setForeground(new java.awt.Color(255, 255, 255));
         lblMenu.setText("Menu");
         lblMenu.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -226,6 +236,8 @@ public class crudProveedor extends javax.swing.JFrame {
             }
         });
 
+=======
+>>>>>>> parent of 30393aa... Finalizacion de crudProveedor
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -277,6 +289,7 @@ public class crudProveedor extends javax.swing.JFrame {
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
+<<<<<<< HEAD
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(20, 20, 20)
@@ -305,6 +318,32 @@ public class crudProveedor extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(0, 13, Short.MAX_VALUE)
+=======
+                .addGap(20, 20, 20)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanel4Layout.createSequentialGroup()
+                            .addComponent(jLabel5)
+                            .addGap(10, 10, 10)
+                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(cboMarcas, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnAdd)))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
+                            .addComponent(jLabel4)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(txtContacto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(11, 11, 11)
+                        .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
+                        .addGap(2, 2, 2)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(0, 17, Short.MAX_VALUE)
+>>>>>>> parent of 30393aa... Finalizacion de crudProveedor
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel6)
                             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -467,12 +506,15 @@ public class crudProveedor extends javax.swing.JFrame {
 //        cuentausuar.setIdUsuario(Integer.parseInt(ValueMember[cboMarcas.getSelectedIndex()]));
     }//GEN-LAST:event_btnAddActionPerformed
 
+<<<<<<< HEAD
     private void lblMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMenuMouseClicked
         crudMenuAdmin menu = new crudMenuAdmin();
         menu.setVisible(true);
         this.hide();
     }//GEN-LAST:event_lblMenuMouseClicked
 
+=======
+>>>>>>> parent of 30393aa... Finalizacion de crudProveedor
     /**
      * @param args the command line arguments
      */
@@ -537,7 +579,10 @@ public class crudProveedor extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTabbedPane jTabbedPane1;
+<<<<<<< HEAD
     private javax.swing.JLabel lblMenu;
+=======
+>>>>>>> parent of 30393aa... Finalizacion de crudProveedor
     private javax.swing.JTable tbMarcas;
     private javax.swing.JTable tbMarcas2;
     private javax.swing.JTable tbProveedores;

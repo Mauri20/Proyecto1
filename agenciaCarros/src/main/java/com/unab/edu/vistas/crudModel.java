@@ -158,18 +158,28 @@ public class crudModel extends javax.swing.JFrame {
                             .addComponent(txtId, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(cbMarca, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(98, 98, 98)
+<<<<<<< HEAD
                         .addComponent(btnLimpiar))
                     .addComponent(lblMenu))
+=======
+                        .addComponent(btnLimpiar)))
+>>>>>>> parent of 30393aa... Finalizacion de crudProveedor
                 .addContainerGap(358, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+<<<<<<< HEAD
                 .addGap(6, 6, 6)
                 .addComponent(lblMenu)
                 .addGap(13, 13, 13)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+=======
+                .addGap(26, 26, 26)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+>>>>>>> parent of 30393aa... Finalizacion de crudProveedor
                 .addComponent(cbMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34)
                 .addComponent(jLabel2)
