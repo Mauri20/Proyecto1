@@ -6,23 +6,19 @@
 package com.unab.edu.vistas;
 
 import com.unab.edu.conexion.Conexion;
-import com.unab.edu.dao.UsuarioDao;
-import com.unab.edu.entidades.Usuario;
 import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
  *
- * @author Dennis
+ * @author Mauricio
  */
 public class Login extends javax.swing.JFrame {
 
-    public static Usuario usuar;
-    int opcion = 0;
     
+
     /**
      * Creates new form Login
      */
@@ -51,8 +47,8 @@ public class Login extends javax.swing.JFrame {
         txtUsuario = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         txtPass = new javax.swing.JPasswordField();
-        OpcUsu = new javax.swing.JRadioButton();
-        OpcAdmin = new javax.swing.JRadioButton();
+        opcUsuario = new javax.swing.JRadioButton();
+        opcAdmin = new javax.swing.JRadioButton();
         btnIngresar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
 
@@ -85,23 +81,18 @@ public class Login extends javax.swing.JFrame {
 
         txtPass.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
 
-        OpcUsu.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        OpcUsu.setForeground(new java.awt.Color(255, 255, 255));
-        OpcUsu.setText("Usuario");
-        OpcUsu.setOpaque(false);
+        opcUsuario.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        opcUsuario.setForeground(new java.awt.Color(255, 255, 255));
+        opcUsuario.setText("Usuario");
+        opcUsuario.setOpaque(false);
 
-        OpcAdmin.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        OpcAdmin.setForeground(new java.awt.Color(255, 255, 255));
-        OpcAdmin.setText("Admin");
-        OpcAdmin.setOpaque(false);
+        opcAdmin.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        opcAdmin.setForeground(new java.awt.Color(255, 255, 255));
+        opcAdmin.setText("Admin");
+        opcAdmin.setOpaque(false);
 
         btnIngresar.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         btnIngresar.setText("Ingresar");
-        btnIngresar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnIngresarActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -114,9 +105,9 @@ public class Login extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addComponent(OpcUsu)
+                            .addComponent(opcUsuario)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(OpcAdmin)
+                            .addComponent(opcAdmin)
                             .addGap(46, 46, 46))
                         .addComponent(txtPass, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
                         .addComponent(txtUsuario, javax.swing.GroupLayout.Alignment.LEADING)))
@@ -139,8 +130,8 @@ public class Login extends javax.swing.JFrame {
                 .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(OpcUsu)
-                    .addComponent(OpcAdmin))
+                    .addComponent(opcUsuario)
+                    .addComponent(opcAdmin))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
                 .addComponent(btnIngresar)
                 .addContainerGap())
@@ -173,49 +164,6 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
         jPanel2.setOpaque(false);
     }//GEN-LAST:event_jPanel2PropertyChange
-
-    private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
-        UsuarioDao UsuDao = new UsuarioDao();
-        Usuario usu = new Usuario();
-        usu.setUsuario(txtUsuario.getText());
-        usu.setPass(txtPass.getText());
-        if (!usu.getUsuario().isEmpty() && !usu.getPass().isEmpty()) {
-            if (OpcUsu.isSelected()) {
-                opcion = 2;
-            } else if (OpcAdmin.isSelected()) {
-                opcion = 1;
-            }
-            if (opcion != 0) {
-                String op = String.valueOf(opcion);
-                usu.setTipo(op);
-                Usuario user= new Usuario();
-                user=UsuDao.Login(usu);
-                if(user.getUsuario()!=null){
-                    JOptionPane.showMessageDialog(null, "Bienvenido " + user.getUsuario());
-                }else{
-                    JOptionPane.showMessageDialog(null, "No se encontró este usuario en el sistema, Por favor vuelva a intentarlo");
-                }
-                usuar=user;
-                if (Integer.parseInt(user.getTipo())== 1) {
-                    
-                    crudMenuAdmin formAbonos = new crudMenuAdmin();
-                    formAbonos.setVisible(true);
-                    this.hide();
-                } else if(Integer.parseInt(user.getTipo()) == 2){
-                    
-                    
-                    crudMenuUsuario formCargos = new crudMenuUsuario();
-                    formCargos.setVisible(true);
-                    this.hide();
-                }
-            } else {
-                JOptionPane.showMessageDialog(null, "llena todos los campos");
-            }
-        } else {
-
-            JOptionPane.showMessageDialog(null, "llena todos los campos");
-        }
-    }//GEN-LAST:event_btnIngresarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -257,8 +205,6 @@ public class Login extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup GrupoBotones;
-    private javax.swing.JRadioButton OpcAdmin;
-    private javax.swing.JRadioButton OpcUsu;
     private javax.swing.JButton btnIngresar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -266,6 +212,8 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JRadioButton opcAdmin;
+    private javax.swing.JRadioButton opcUsuario;
     private javax.swing.JPasswordField txtPass;
     private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables

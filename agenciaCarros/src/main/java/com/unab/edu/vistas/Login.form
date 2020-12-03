@@ -91,9 +91,9 @@
                           <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                           <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
                               <Group type="102" alignment="1" attributes="0">
-                                  <Component id="OpcUsu" min="-2" max="-2" attributes="0"/>
+                                  <Component id="opcUsuario" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="OpcAdmin" min="-2" max="-2" attributes="0"/>
+                                  <Component id="opcAdmin" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
                               </Group>
                               <Component id="txtPass" alignment="0" pref="233" max="32767" attributes="0"/>
@@ -122,8 +122,8 @@
                       <Component id="txtPass" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="OpcUsu" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="OpcAdmin" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="opcUsuario" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="opcAdmin" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="19" max="32767" attributes="0"/>
                       <Component id="btnIngresar" min="-2" max="-2" attributes="0"/>
@@ -169,7 +169,7 @@
                 </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JRadioButton" name="OpcUsu">
+            <Component class="javax.swing.JRadioButton" name="opcUsuario">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Verdana" size="14" style="1"/>
@@ -181,7 +181,7 @@
                 <Property name="opaque" type="boolean" value="false"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JRadioButton" name="OpcAdmin">
+            <Component class="javax.swing.JRadioButton" name="opcAdmin">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Verdana" size="14" style="1"/>
@@ -200,9 +200,6 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Ingresar"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnIngresarActionPerformed"/>
-              </Events>
             </Component>
           </SubComponents>
         </Container>

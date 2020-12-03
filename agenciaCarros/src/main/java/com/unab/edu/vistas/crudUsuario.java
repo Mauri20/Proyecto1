@@ -70,7 +70,7 @@ public class crudUsuario extends javax.swing.JFrame {
             filas[1] = String.valueOf(iterarDatos.getId());
             filas[2] = iterarDatos.getUsuario();
             filas[3] = iterarDatos.getPass();
-            filas[4] = String.valueOf(iterarDatos.getTipo());
+            filas[4] = iterarDatos.getTipo();
            
             
             modelTabla.addRow(filas);
@@ -104,7 +104,6 @@ public class crudUsuario extends javax.swing.JFrame {
         btnEliminar = new javax.swing.JButton();
         txtUsuario = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        lblMenu = new javax.swing.JLabel();
         Fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -133,7 +132,7 @@ public class crudUsuario extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 620, Short.MAX_VALUE)
+            .addGap(0, 621, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel2Layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -142,7 +141,7 @@ public class crudUsuario extends javax.swing.JFrame {
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 511, Short.MAX_VALUE)
+            .addGap(0, 500, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel2Layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -217,52 +216,43 @@ public class crudUsuario extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Empleado:");
 
-        lblMenu.setForeground(new java.awt.Color(255, 255, 255));
-        lblMenu.setText("Menu");
-        lblMenu.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblMenuMouseClicked(evt);
-            }
-        });
-
         javax.swing.GroupLayout MesaDeTrabajoLayout = new javax.swing.GroupLayout(MesaDeTrabajo);
         MesaDeTrabajo.setLayout(MesaDeTrabajoLayout);
         MesaDeTrabajoLayout.setHorizontalGroup(
             MesaDeTrabajoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(MesaDeTrabajoLayout.createSequentialGroup()
-                .addGap(36, 36, 36)
                 .addGroup(MesaDeTrabajoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(MesaDeTrabajoLayout.createSequentialGroup()
-                        .addComponent(lblMenu)
-                        .addGap(124, 124, 124)
+                        .addGap(186, 186, 186)
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(MesaDeTrabajoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtContraseña, javax.swing.GroupLayout.DEFAULT_SIZE, 544, Short.MAX_VALUE))
-                    .addGroup(MesaDeTrabajoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(MesaDeTrabajoLayout.createSequentialGroup()
-                            .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(115, 115, 115)
-                            .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(cbTipo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 543, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(txtIdUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 544, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbIdEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 543, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 544, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(MesaDeTrabajoLayout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addGroup(MesaDeTrabajoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(MesaDeTrabajoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtContraseña, javax.swing.GroupLayout.DEFAULT_SIZE, 544, Short.MAX_VALUE))
+                            .addGroup(MesaDeTrabajoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(MesaDeTrabajoLayout.createSequentialGroup()
+                                    .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(115, 115, 115)
+                                    .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(cbTipo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 543, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtIdUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 544, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cbIdEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 543, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 544, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(40, Short.MAX_VALUE))
         );
         MesaDeTrabajoLayout.setVerticalGroup(
             MesaDeTrabajoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(MesaDeTrabajoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(MesaDeTrabajoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblMenu))
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -314,17 +304,69 @@ public class crudUsuario extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(jTbDatos)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTbDatos, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jTbDatos)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cbIdEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbIdEmpleadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbIdEmpleadoActionPerformed
+
+    private void cbTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbTipoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbTipoActionPerformed
+
+    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+      
+        cbIdEmpleado.setSelectedItem("");
+        txtIdUsuario.setText("");
+        txtContraseña.setText("");
+        txtUsuario.setText("");
+        cbTipo.setSelectedItem("");
+    }//GEN-LAST:event_btnLimpiarActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+      
+         UsuarioDao usuadao = new UsuarioDao();
+        Usuario usuario = new Usuario();
+        
+        usuario.setIdUsuario(Integer.parseInt(txtIdUsuario.getText()));
+        
+        usuadao.eliminarUsuario(usuario);
+        MostrarUsuario();
+             
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        
+        try {
+            
+        UsuarioDao usuu = new UsuarioDao();
+        Usuario usuarioo = new Usuario();
+
+
+        usuarioo.setId(Integer.parseInt(valueMember[cbIdEmpleado.getSelectedIndex()]));   
+        usuarioo.setUsuario(txtUsuario.getText());
+        usuarioo.setPass(txtContraseña.getText());
+        usuarioo.setTipo((valueMember[cbTipo.getSelectedIndex()]));
+
+        usuu.agregarUsuario(usuarioo);
+       
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "error verifica los datos");
+        }
+        
+    }//GEN-LAST:event_btnGuardarActionPerformed
 
     
     
@@ -360,61 +402,6 @@ public class crudUsuario extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_tbUsuariosMouseClicked
-
-    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-
-        UsuarioDao usuadao = new UsuarioDao();
-        Usuario usuario = new Usuario();
-
-        usuario.setIdUsuario(Integer.parseInt(txtIdUsuario.getText()));
-
-        usuadao.eliminarUsuario(usuario);
-        MostrarUsuario();
-
-    }//GEN-LAST:event_btnEliminarActionPerformed
-
-    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
-
-        cbIdEmpleado.setSelectedItem("");
-        txtIdUsuario.setText("");
-        txtContraseña.setText("");
-        txtUsuario.setText("");
-        cbTipo.setSelectedItem("");
-    }//GEN-LAST:event_btnLimpiarActionPerformed
-
-    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-
-        try {
-
-            UsuarioDao usuu = new UsuarioDao();
-            Usuario usuarioo = new Usuario();
-
-            usuarioo.setId(Integer.parseInt(valueMember[cbIdEmpleado.getSelectedIndex()]));
-            usuarioo.setUsuario(txtUsuario.getText());
-            usuarioo.setPass(txtContraseña.getText());
-            usuarioo.setTipo((valueMember[cbTipo.getSelectedIndex()]));
-
-            usuu.agregarUsuario(usuarioo);
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "error verifica los datos");
-        }
-
-    }//GEN-LAST:event_btnGuardarActionPerformed
-
-    private void cbTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbTipoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cbTipoActionPerformed
-
-    private void cbIdEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbIdEmpleadoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cbIdEmpleadoActionPerformed
-
-    private void lblMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMenuMouseClicked
-        crudMenuAdmin menu = new crudMenuAdmin();
-        menu.setVisible(true);
-        this.hide();
-    }//GEN-LAST:event_lblMenuMouseClicked
 
     /**
      * @param args the command line arguments
@@ -470,7 +457,6 @@ public class crudUsuario extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTbDatos;
-    private javax.swing.JLabel lblMenu;
     private javax.swing.JTable tbUsuarios;
     private javax.swing.JTextField txtContraseña;
     private javax.swing.JTextField txtIdUsuario;
