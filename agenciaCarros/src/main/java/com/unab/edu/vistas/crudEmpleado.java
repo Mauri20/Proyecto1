@@ -123,6 +123,7 @@ public class crudEmpleado extends javax.swing.JFrame {
         btnEliminar = new javax.swing.JButton();
         btnLimpiar = new javax.swing.JButton();
         txtIdEmpleado = new javax.swing.JLabel();
+        lblMenu = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jPanelListado = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
@@ -234,6 +235,14 @@ public class crudEmpleado extends javax.swing.JFrame {
             }
         });
 
+        lblMenu.setForeground(new java.awt.Color(255, 255, 255));
+        lblMenu.setText("Menu");
+        lblMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblMenuMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -280,18 +289,24 @@ public class crudEmpleado extends javax.swing.JFrame {
                         .addComponent(jLabel6)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(130, 130, 130)
-                .addComponent(btnGuardar)
-                .addGap(72, 72, 72)
-                .addComponent(btnEliminar)
-                .addGap(77, 77, 77)
-                .addComponent(btnLimpiar)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(130, 130, 130)
+                        .addComponent(btnGuardar)
+                        .addGap(72, 72, 72)
+                        .addComponent(btnEliminar)
+                        .addGap(77, 77, 77)
+                        .addComponent(btnLimpiar))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lblMenu)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(17, 17, 17)
+                .addComponent(lblMenu)
+                .addGap(3, 3, 3)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel1)
@@ -543,6 +558,12 @@ public class crudEmpleado extends javax.swing.JFrame {
         Limpiar();
     }//GEN-LAST:event_btnEliminarActionPerformed
 
+    private void lblMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMenuMouseClicked
+        crudMenuAdmin menu = new crudMenuAdmin();
+        menu.setVisible(true);
+        this.hide();
+    }//GEN-LAST:event_lblMenuMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -604,6 +625,7 @@ public class crudEmpleado extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTbMenu;
+    private javax.swing.JLabel lblMenu;
     private javax.swing.JRadioButton rbFemenino;
     private javax.swing.JRadioButton rbMasculino;
     private javax.swing.JTable tbEmpleados;

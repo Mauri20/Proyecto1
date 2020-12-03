@@ -12,6 +12,7 @@ import com.unab.edu.dao.EmpleadoDao;
 import com.unab.edu.entidades.Empleado;
 import com.unab.edu.entidades.Cliente;
 import com.unab.edu.entidades.Tablas;
+import com.unab.edu.entidades.Usuario;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
@@ -23,6 +24,8 @@ import javax.swing.table.DefaultTableModel;
  */
 public class crudCliente extends javax.swing.JFrame {
 //HolaSoyGerman
+    public static Usuario usuar;
+    int opcion = 0;
     /**
      *
      */
@@ -109,6 +112,7 @@ public class crudCliente extends javax.swing.JFrame {
         lblTipoCliente2 = new javax.swing.JLabel();
         txtDuiCliente = new javax.swing.JTextField();
         lblNombreCliente1 = new javax.swing.JLabel();
+        lblMenu = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         tbListado = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
@@ -214,29 +218,44 @@ public class crudCliente extends javax.swing.JFrame {
         lblNombreCliente1.setForeground(new java.awt.Color(255, 255, 255));
         lblNombreCliente1.setText("Nombre:");
 
+        lblMenu.setFont(new java.awt.Font("Yu Gothic Medium", 0, 11)); // NOI18N
+        lblMenu.setForeground(new java.awt.Color(255, 255, 255));
+        lblMenu.setText("Menu");
+        lblMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblMenuMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txtCorreoCliente)
-                                .addComponent(txtNombreCliente, javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jScrollPane1))
-                            .addComponent(lblCorreoCliente)
-                            .addComponent(lblDireccionCliente)
-                            .addComponent(txtDuiCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblTipoCliente2))
-                        .addGap(35, 35, 35))
+                        .addGap(35, 35, 35)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(txtCorreoCliente)
+                                        .addComponent(txtNombreCliente, javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jScrollPane1))
+                                    .addComponent(lblCorreoCliente)
+                                    .addComponent(lblDireccionCliente)
+                                    .addComponent(txtDuiCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblTipoCliente2))
+                                .addGap(35, 35, 35))
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(btnGuardarCliente)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnElminar1)
+                                .addGap(18, 18, 18))))
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(btnGuardarCliente)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnElminar1)
-                        .addGap(18, 18, 18)))
+                        .addContainerGap()
+                        .addComponent(lblMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(lblContactoCliente)
@@ -271,7 +290,9 @@ public class crudCliente extends javax.swing.JFrame {
                         .addComponent(lblContactoCliente))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(lblIdCliente)))
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblMenu)
+                            .addComponent(lblIdCliente))))
                 .addGap(11, 11, 11)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtContactoCliente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -492,6 +513,23 @@ public class crudCliente extends javax.swing.JFrame {
         Limpiar();
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
+    private void lblMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMenuMouseClicked
+        
+                
+                if (Integer.parseInt(usuar.getTipo())== 1) {
+                    
+                    crudMenuAdmin formAbonos = new crudMenuAdmin();
+                    formAbonos.setVisible(true);
+                    this.hide();
+                } else if(Integer.parseInt(usuar.getTipo()) == 2){
+                    
+                    
+                    crudMenuUsuario formCargos = new crudMenuUsuario();
+                    formCargos.setVisible(true);
+                    this.hide();
+                }
+    }//GEN-LAST:event_lblMenuMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -544,6 +582,7 @@ public class crudCliente extends javax.swing.JFrame {
     private javax.swing.JLabel lblCorreoCliente;
     private javax.swing.JLabel lblDireccionCliente;
     private javax.swing.JLabel lblIdCliente;
+    private javax.swing.JLabel lblMenu;
     private javax.swing.JLabel lblNitCliente;
     private javax.swing.JLabel lblNombreCliente1;
     private javax.swing.JLabel lblNrcCliente;
