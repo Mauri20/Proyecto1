@@ -2,94 +2,84 @@ com\unab\edu\vistas\crudUsuario$4.class
 com\unab\edu\vistas\crudEmpleado.class
 com\unab\edu\vistas\crudMarca$3.class
 com\unab\edu\vistas\crudCliente$2.class
-com\unab\edu\vistas\crudProveedor$1.class
+com\unab\edu\vistas\crudProveedor$5.class
 com\unab\edu\vistas\Login$2.class
 com\unab\edu\vistas\crudMenuAdmin$7.class
-com\unab\edu\vistas\crudModel$1.class
 com\unab\edu\vistas\crudMenuAdmin$4.class
-com\unab\edu\vistas\crudCliente$6.class
 com\unab\edu\vistas\crudEmpleado$4.class
-com\unab\edu\vistas\crudModel$4.class
-com\unab\edu\vistas\crudMarca$FondoPanel.class
+com\unab\edu\vistas\crudProveedor$8.class
 com\unab\edu\vistas\crudCliente.class
 com\unab\edu\dao\MarcaDao.class
 com\unab\edu\vistas\crudMenuAdmin.class
-com\unab\edu\vistas\crudUsuario$8.class
-com\unab\edu\dao\EmpleadoDao.class
 com\unab\edu\entidades\Modelo.class
-com\unab\edu\vistas\crudCliente$3.class
-<<<<<<< HEAD
-<<<<<<< HEAD
 com\unab\edu\vistas\crudMenuAdmin$1.class
-=======
->>>>>>> parent of 30393aa... Finalizacion de crudProveedor
-=======
->>>>>>> parent of 30393aa... Finalizacion de crudProveedor
-com\unab\edu\vistas\crudUsuario$5.class
 com\unab\edu\entidades\Usuario.class
 com\unab\edu\conexion\Conexion.class
 com\unab\edu\vistas\crudEmpleado$1.class
+com\unab\edu\vistas\crudModel$3.class
+com\unab\edu\vistas\Ventas$1.class
+com\unab\edu\vistas\crudMenuUsuario$1.class
+com\unab\edu\vistas\crudMarca$5.class
+com\unab\edu\vistas\crudEmpleado$2.class
+com\unab\edu\dao\ModeloDao.class
+com\unab\edu\vistas\crudUsuario$2.class
+com\unab\edu\entidades\Cliente.class
+com\unab\edu\vistas\crudMenuAdmin$2.class
+com\unab\edu\vistas\crudUsuario$6.class
+com\unab\edu\vistas\crudCliente$1.class
+com\unab\edu\vistas\crudProveedor$6.class
+com\unab\edu\vistas\crudMarca.class
+com\unab\edu\entidades\Marca.class
+com\unab\edu\dao\UsuarioDao.class
+com\unab\edu\vistas\crudMenuAdmin$9.class
+com\unab\edu\vistas\crudModel$2.class
+com\unab\edu\vistas\Ventas.class
+com\unab\edu\vistas\crudMarca$6.class
+com\unab\edu\entidades\Venta.class
+com\unab\edu\vistas\crudUsuario$1.class
+com\unab\edu\vistas\crudUsuario$7.class
+com\unab\edu\vistas\crudMenuAdmin$3.class
+com\unab\edu\vistas\crudEmpleado$3.class
+com\unab\edu\vistas\crudModel$FondoPanel.class
+com\unab\edu\vistas\crudProveedor$1.class
+com\unab\edu\vistas\crudModel$1.class
+com\unab\edu\vistas\crudCliente$6.class
+com\unab\edu\vistas\crudModel$4.class
+com\unab\edu\vistas\crudMarca$FondoPanel.class
+com\unab\edu\vistas\crudUsuario$8.class
+com\unab\edu\dao\EmpleadoDao.class
+com\unab\edu\dao\ProveedorDao.class
+com\unab\edu\vistas\crudCliente$3.class
+com\unab\edu\vistas\crudProveedor$4.class
+com\unab\edu\vistas\crudUsuario$5.class
 com\unab\edu\vistas\crudMarca$1.class
 com\unab\edu\vistas\crudEmpleado$5.class
+com\unab\edu\vistas\crudProveedor$7.class
 com\unab\edu\vistas\crudModel.class
 com\unab\edu\vistas\crudMenuAdmin$8.class
-com\unab\edu\vistas\crudModel$3.class
 com\unab\edu\vistas\Login$1.class
-com\unab\edu\vistas\Ventas$1.class
 com\unab\edu\vistas\crudMenuAdmin$5.class
 com\unab\edu\vistas\crudMenuUsuario.class
-com\unab\edu\vistas\crudMenuUsuario$1.class
 com\unab\edu\vistas\crudMarca$4.class
 com\unab\edu\vistas\crudProveedor.class
 com\unab\edu\vistas\crudCliente$4.class
 com\unab\edu\vistas\Login.class
-com\unab\edu\vistas\crudMarca$5.class
-com\unab\edu\vistas\crudEmpleado$2.class
 com\unab\edu\vistas\crudModel$6.class
-com\unab\edu\dao\ModeloDao.class
 com\unab\edu\dao\ClienteDao.class
-com\unab\edu\vistas\crudUsuario$2.class
-com\unab\edu\entidades\Cliente.class
-<<<<<<< HEAD
-<<<<<<< HEAD
-com\unab\edu\vistas\crudMenuAdmin$2.class
+com\unab\edu\entidades\Proveedor.class
 com\unab\edu\vistas\crudMenuUsuario$3.class
-=======
->>>>>>> parent of 30393aa... Finalizacion de crudProveedor
-=======
->>>>>>> parent of 30393aa... Finalizacion de crudProveedor
-com\unab\edu\vistas\crudUsuario$6.class
-com\unab\edu\vistas\crudCliente$1.class
-com\unab\edu\vistas\crudMarca.class
-com\unab\edu\entidades\Marca.class
-com\unab\edu\dao\UsuarioDao.class
 com\unab\edu\vistas\crudUsuario$3.class
 com\unab\edu\vistas\crudUsuario.class
-<<<<<<< HEAD
-<<<<<<< HEAD
-com\unab\edu\vistas\crudMenuAdmin$9.class
 com\unab\edu\vistas\crudProveedor$3.class
+com\unab\edu\vistas\crudProveedor$9.class
 com\unab\edu\vistas\Login$3.class
 com\unab\edu\vistas\crudMenuAdmin$6.class
 com\unab\edu\vistas\crudMenuUsuario$2.class
-=======
->>>>>>> parent of 30393aa... Finalizacion de crudProveedor
-=======
->>>>>>> parent of 30393aa... Finalizacion de crudProveedor
-com\unab\edu\vistas\crudModel$2.class
 com\unab\edu\vistas\crudProveedor$2.class
 com\unab\edu\vistas\crudEmpleado$6.class
-com\unab\edu\vistas\Ventas.class
 com\unab\edu\vistas\crudMarca$2.class
-com\unab\edu\vistas\crudMarca$6.class
 com\unab\edu\vistas\Ventas$2.class
-com\unab\edu\entidades\Venta.class
-com\unab\edu\vistas\crudUsuario$1.class
-com\unab\edu\vistas\crudUsuario$7.class
 com\unab\edu\vistas\crudModel$5.class
-com\unab\edu\vistas\crudMenuAdmin$3.class
 com\unab\edu\entidades\Empleado.class
 com\unab\edu\entidades\Tablas.class
-com\unab\edu\vistas\crudEmpleado$3.class
-com\unab\edu\vistas\crudModel$FondoPanel.class
 com\unab\edu\vistas\crudCliente$5.class
