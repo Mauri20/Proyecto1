@@ -1,4 +1,5 @@
 com\unab\edu\vistas\crudUsuario$4.class
+com\unab\edu\entidades\Fondo.class
 com\unab\edu\vistas\crudEmpleado.class
 com\unab\edu\vistas\crudMarca$3.class
 com\unab\edu\vistas\crudCliente$2.class
@@ -17,6 +18,7 @@ com\unab\edu\entidades\Usuario.class
 com\unab\edu\conexion\Conexion.class
 com\unab\edu\vistas\crudEmpleado$1.class
 com\unab\edu\vistas\crudModel$3.class
+com\unab\edu\vistas\crudVehiculo.class
 com\unab\edu\vistas\Ventas$1.class
 com\unab\edu\vistas\crudMenuUsuario$1.class
 com\unab\edu\vistas\crudMarca$5.class
@@ -78,6 +80,7 @@ com\unab\edu\vistas\crudMenuUsuario$2.class
 com\unab\edu\vistas\crudProveedor$2.class
 com\unab\edu\vistas\crudEmpleado$6.class
 com\unab\edu\vistas\crudMarca$2.class
+com\unab\edu\vistas\crudVehiculo$1.class
 com\unab\edu\vistas\Ventas$2.class
 com\unab\edu\vistas\crudModel$5.class
 com\unab\edu\entidades\Empleado.class

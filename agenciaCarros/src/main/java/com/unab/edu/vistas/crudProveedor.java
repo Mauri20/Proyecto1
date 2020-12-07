@@ -32,7 +32,15 @@ public class crudProveedor extends javax.swing.JFrame {
     public crudProveedor() {
         initComponents();
         setLocationRelativeTo(this);
-        //Tabla de Registro
+        DisplayMarcas();
+        MostrarProveedores();
+        String TITULOS[] = {"NOMBRE", "ID"};
+        DefaultTableModel modelo = new DefaultTableModel(null, TITULOS);
+        tbMarcas.setModel(modelo);
+        //Para quitar la edicion del Jtable
+        tbProveedores.setDefaultEditor(Object.class, null);
+        
+         //Tabla de Registro
         Tablas.removeBackground(tbMarcas, jScrollPane2);
         Tablas.resizeColumnWidth(tbMarcas, 26, 81);
         //Tabla de Listado1
@@ -41,14 +49,6 @@ public class crudProveedor extends javax.swing.JFrame {
         //Tabla de Listado2
         Tablas.removeBackground(tbMarcas2, jScrollPane4);
         Tablas.resizeColumnWidth(tbMarcas2, 26, 81);
-
-        DisplayMarcas();
-        MostrarProveedores();
-        String TITULOS[] = {"NOMBRE", "ID"};
-        DefaultTableModel modelo = new DefaultTableModel(null, TITULOS);
-        tbMarcas.setModel(modelo);
-        //Para quitar la edicion del Jtable
-        tbProveedores.setDefaultEditor(Object.class, null);
     }
 
     void MostrarMarcas(int IdProveedor) {
