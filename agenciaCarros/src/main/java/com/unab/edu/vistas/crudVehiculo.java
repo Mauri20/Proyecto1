@@ -5,9 +5,18 @@
  */
 package com.unab.edu.vistas;
 
+import com.unab.edu.dao.ModeloDao;
+import com.unab.edu.dao.ProveedorDao;
+import com.unab.edu.dao.VehiculoDao;
 import com.unab.edu.entidades.Fondo;
+import com.unab.edu.entidades.Modelo;
+import com.unab.edu.entidades.Proveedor;
 import com.unab.edu.entidades.Tablas;
+import com.unab.edu.entidades.Vehiculo;
 import java.awt.Color;
+import java.util.ArrayList;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -20,20 +29,85 @@ public class crudVehiculo extends javax.swing.JFrame {
      * Creates new form crudVehiculo
      */
     Fondo fondo = new Fondo();
+
     public crudVehiculo() {
         this.setContentPane(fondo);
         initComponents();
         this.setLocationRelativeTo(this);
-        btnBuscar.setBackground(new Color(0,0,0,0));
+        btnBuscar.setBackground(new Color(0, 0, 0, 0));
         MotrarVehiculos();
         Tablas.removeBackground(tbVehiculos, jScrollPane1);
-        Tablas.resizeColumnWidth(tbVehiculos, 21, 81);
+        Tablas.resizeColumnWidth(tbVehiculos, 35, 100);
+
+        txtMarca.enable(false);
     }
-    void MotrarVehiculos(){
-        String TITULOS[] = {"ID", "MODELO", "MARCA", "PROVEEDOR", "CHASIS", "PUERTAS", "EMISION", "MOTOR", "PRECIO"};
+
+    String ValueMember[];
+    int contador = 1;
+
+    void DisplayProveedores(int idMarca) {
+        DefaultComboBoxModel cbodefault = new DefaultComboBoxModel();
+        ProveedorDao provDao = new ProveedorDao();
+        ArrayList<Proveedor> listado = provDao.mostrarProveedoresMarca(idMarca);
+        ValueMember = new String[listado.size() + 1];
+        String filas[] = new String[2];
+        for (var iterarDatos : listado) {
+
+            filas[0] = String.valueOf(iterarDatos.getId());
+            filas[1] = iterarDatos.getNombre();
+            ValueMember[contador] = filas[0];
+            cbodefault.addElement(filas[1]);
+            contador++;
+        }
+        cboProveedor.setModel(cbodefault);
+    }
+
+    void MotrarVehiculos() {
+        String TITULOS[] = {"IDVEHIVULO", "IDMODELO", "MODELO", "IDMARCA", "MARCA", "IDPROVEEDOR", "PROVEEDOR", "CHASIS", "PUERTAS", "COLOR", "EMISION", "MOTOR", "PRECIO"};
         DefaultTableModel modeloTabla = new DefaultTableModel(null, TITULOS);
+
+        VehiculoDao carroDao = new VehiculoDao();
+        var listado = carroDao.mostrarVehiculos();
+
+        String fila[] = new String[13];
+
+        for (var iterar : listado) {
+            fila[0] = String.valueOf(iterar.getId());
+            fila[1] = String.valueOf(iterar.getModelo().getIdModelo());
+            fila[2] = iterar.getModelo().getNombreModelo();
+            fila[3] = String.valueOf(iterar.getModelo().getId());
+            fila[4] = iterar.getModelo().getNombreMarca();
+            fila[5] = String.valueOf(iterar.getProveedor().getId());
+            fila[6] = iterar.getProveedor().getNombre();
+            fila[7] = iterar.getChasis();
+            fila[8] = String.valueOf(iterar.getPuertas());
+            fila[9] = iterar.getColor();
+            fila[10] = iterar.getEmision();
+            fila[11] = iterar.getMotor();
+            fila[12] = String.valueOf(iterar.getPrecioAdq());
+            modeloTabla.addRow(fila);
+        }
         tbVehiculos.setModel(modeloTabla);
     }
+
+    void Limpiar() {
+        txtModelo.setText("");
+        txtIdModelo.setText("0");
+        txtMarca.setText("");
+        txtIdMarca.setText("0");
+        //Restablecer el cboProveedores
+        cboProveedor.removeAllItems();
+        ValueMember = null;
+        contador = 1;
+        txtChasis.setText("");
+        txtColor.setText("");
+        txtPuertas.setText("");
+        txtEmision.setText("");
+        txtMotor.setText("");
+        txtPrecioAdq.setText("");
+        txtIdVehiculo.setText("0");
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -52,8 +126,8 @@ public class crudVehiculo extends javax.swing.JFrame {
         btnBuscar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         cboProveedor = new javax.swing.JComboBox<>();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        txtIdMarca = new javax.swing.JLabel();
+        txtIdModelo = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         txtChasis = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
@@ -69,7 +143,7 @@ public class crudVehiculo extends javax.swing.JFrame {
         btnGuardar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
         btnLimpiar = new javax.swing.JButton();
-        jLabel12 = new javax.swing.JLabel();
+        txtIdVehiculo = new javax.swing.JLabel();
         PanelListado = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbVehiculos = new javax.swing.JTable();
@@ -101,6 +175,11 @@ public class crudVehiculo extends javax.swing.JFrame {
         btnBuscar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnBuscar.setIconTextGap(6);
         btnBuscar.setOpaque(false);
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(204, 204, 255));
@@ -109,13 +188,13 @@ public class crudVehiculo extends javax.swing.JFrame {
         cboProveedor.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         cboProveedor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jLabel4.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(204, 204, 255));
-        jLabel4.setText("0");
+        txtIdMarca.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        txtIdMarca.setForeground(new java.awt.Color(204, 204, 255));
+        txtIdMarca.setText("0");
 
-        jLabel5.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(204, 204, 255));
-        jLabel5.setText("0");
+        txtIdModelo.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        txtIdModelo.setForeground(new java.awt.Color(204, 204, 255));
+        txtIdModelo.setText("0");
 
         jLabel6.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(204, 204, 255));
@@ -155,16 +234,26 @@ public class crudVehiculo extends javax.swing.JFrame {
 
         btnGuardar.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         btnGuardar.setText("Gaurdar");
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
 
         btnEliminar.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
 
         btnLimpiar.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         btnLimpiar.setText("Limpiar");
 
-        jLabel12.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(204, 204, 255));
-        jLabel12.setText("0");
+        txtIdVehiculo.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        txtIdVehiculo.setForeground(new java.awt.Color(204, 204, 255));
+        txtIdVehiculo.setText("0");
 
         javax.swing.GroupLayout PanelDatosLayout = new javax.swing.GroupLayout(PanelDatos);
         PanelDatos.setLayout(PanelDatosLayout);
@@ -182,7 +271,7 @@ public class crudVehiculo extends javax.swing.JFrame {
                 .addGap(28, 28, 28)
                 .addGroup(PanelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PanelDatosLayout.createSequentialGroup()
-                        .addComponent(jLabel12)
+                        .addComponent(txtIdVehiculo)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(PanelDatosLayout.createSequentialGroup()
                         .addGroup(PanelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -196,7 +285,7 @@ public class crudVehiculo extends javax.swing.JFrame {
                                     .addGroup(PanelDatosLayout.createSequentialGroup()
                                         .addComponent(jLabel1)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jLabel5))
+                                        .addComponent(txtIdModelo))
                                     .addComponent(txtModelo, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -206,7 +295,7 @@ public class crudVehiculo extends javax.swing.JFrame {
                                 .addGroup(PanelDatosLayout.createSequentialGroup()
                                     .addComponent(jLabel2)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel4))
+                                    .addComponent(txtIdMarca))
                                 .addComponent(txtMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel7)
                             .addComponent(txtPuertas, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -235,7 +324,7 @@ public class crudVehiculo extends javax.swing.JFrame {
                                         .addComponent(jLabel2)
                                         .addGap(12, 12, 12))
                                     .addGroup(PanelDatosLayout.createSequentialGroup()
-                                        .addComponent(jLabel4)
+                                        .addComponent(txtIdMarca)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                                 .addComponent(txtMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(PanelDatosLayout.createSequentialGroup()
@@ -245,14 +334,14 @@ public class crudVehiculo extends javax.swing.JFrame {
                             .addGroup(PanelDatosLayout.createSequentialGroup()
                                 .addGroup(PanelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel1)
-                                    .addComponent(jLabel5))
+                                    .addComponent(txtIdModelo))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(txtModelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(PanelDatosLayout.createSequentialGroup()
                         .addGap(34, 34, 34)
                         .addComponent(btnBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(3, 3, 3)
-                .addComponent(jLabel12)
+                .addComponent(txtIdVehiculo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(PanelDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(PanelDatosLayout.createSequentialGroup()
@@ -293,6 +382,7 @@ public class crudVehiculo extends javax.swing.JFrame {
 
         PanelListado.setOpaque(false);
 
+        tbVehiculos.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         tbVehiculos.setForeground(new java.awt.Color(255, 255, 255));
         tbVehiculos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -308,6 +398,11 @@ public class crudVehiculo extends javax.swing.JFrame {
         tbVehiculos.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
         tbVehiculos.setGridColor(new java.awt.Color(255, 255, 255));
         tbVehiculos.setOpaque(false);
+        tbVehiculos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbVehiculosMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tbVehiculos);
 
         javax.swing.GroupLayout PanelListadoLayout = new javax.swing.GroupLayout(PanelListado);
@@ -342,6 +437,133 @@ public class crudVehiculo extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        // TODO add your handling code here:
+        String nombreModelo = txtModelo.getText();
+        Modelo modelo = new Modelo();
+        ModeloDao modeloDao = new ModeloDao();
+        modelo = modeloDao.BuscarModelo(nombreModelo);
+        try {
+            txtModelo.setText(modelo.getNombreModelo());
+            txtIdModelo.setText(String.valueOf(modelo.getIdModelo()));
+            txtMarca.setText(modelo.getNombreMarca());
+            txtIdMarca.setText(String.valueOf(modelo.getId()));
+//           DisplayProveedores(modelo.getId());
+            cboProveedor.removeAllItems();
+            contador = 1;
+            ValueMember = null;
+            DisplayProveedores(Integer.parseInt(txtIdMarca.getText()));
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "La cagaste! Así no Es! " + e);
+        }
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        // TODO add your handling code here:
+        if (txtMarca.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Debe ingresar un Modelo Válido para Continuar");
+        } else {
+            if (txtChasis.getText().trim().isEmpty() || txtPuertas.getText().trim().isEmpty() || txtColor.getText().trim().isEmpty()
+                    || txtEmision.getText().trim().isEmpty() || txtMotor.getText().trim().isEmpty() || txtPrecioAdq.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Debe completar todos los Campos!");
+            } else {
+                VehiculoDao carroDao = new VehiculoDao();
+                Vehiculo carro = new Vehiculo();
+
+                Modelo modelo = new Modelo();
+                modelo.setId(Integer.parseInt(txtIdMarca.getText()));
+                modelo.setIdModelo(Integer.parseInt(txtIdModelo.getText()));
+                modelo.setNombreMarca(txtMarca.getText());
+                modelo.setNombreModelo(txtModelo.getText());
+
+                Proveedor prov = new Proveedor();
+                prov.setId(Integer.parseInt(ValueMember[cboProveedor.getSelectedIndex() + 1]));
+                prov.setNombre(String.valueOf(cboProveedor.getSelectedItem()));
+
+                if (txtPuertas.getText().isEmpty()) {
+                    txtPuertas.setText("0");
+                }
+                carro.setId(Integer.parseInt(txtIdVehiculo.getText()));
+                carro.setPuertas(Integer.parseInt(txtPuertas.getText()));
+                carro.setChasis(txtChasis.getText());
+                carro.setColor(txtColor.getText());
+                carro.setEmision(txtEmision.getText());
+                carro.setMotor(txtMotor.getText());
+                if (txtPrecioAdq.getText().isEmpty()) {
+                    txtPrecioAdq.setText("0");
+                }
+                carro.setPrecioAdq(Double.parseDouble(txtPrecioAdq.getText()));
+                carro.setModelo(modelo);
+                carro.setProveedor(prov);
+                if (carro.getId() > 0) {
+                    carroDao.actualizarVehiculo(carro);
+                    //limpiar
+                    Limpiar();
+                    MotrarVehiculos();
+                } else {
+                    carroDao.agregarVehiculo(carro);
+                    Limpiar();
+                    MotrarVehiculos();
+                }
+            }
+        }
+    }//GEN-LAST:event_btnGuardarActionPerformed
+
+    private void tbVehiculosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbVehiculosMouseClicked
+        // TODO add your handling code here:
+        Menu.setSelectedIndex(Menu.indexOfComponent(PanelDatos));
+
+        int fila = tbVehiculos.getSelectedRow();
+
+        String idVehiculo = String.valueOf(tbVehiculos.getValueAt(fila, 0));
+        String idModelo = String.valueOf(tbVehiculos.getValueAt(fila, 1));
+        String modelo = String.valueOf(tbVehiculos.getValueAt(fila, 2));
+        String idMarca = String.valueOf(tbVehiculos.getValueAt(fila, 3));
+        String marca = String.valueOf(tbVehiculos.getValueAt(fila, 4));
+        String idProv = String.valueOf(tbVehiculos.getValueAt(fila, 5));
+        String prov = String.valueOf(tbVehiculos.getValueAt(fila, 6));
+        String chasis = String.valueOf(tbVehiculos.getValueAt(fila, 7));
+        String puertas = String.valueOf(tbVehiculos.getValueAt(fila, 8));
+        String color = String.valueOf(tbVehiculos.getValueAt(fila, 9));
+        String emision = String.valueOf(tbVehiculos.getValueAt(fila, 10));
+        String motor = String.valueOf(tbVehiculos.getValueAt(fila, 11));
+        String precio = String.valueOf(tbVehiculos.getValueAt(fila, 12));
+
+        txtIdVehiculo.setText(idVehiculo);
+        txtModelo.setText(modelo);
+        btnBuscar.doClick();
+        int seleccionadordeVista = -1;
+        for (var it : ValueMember) {
+            if (it == null) {
+                it = "0";
+            }
+            if (it.trim().equals(idProv)) {
+                cboProveedor.setSelectedIndex(seleccionadordeVista);
+            }
+            seleccionadordeVista += 1;
+        }
+        txtChasis.setText(chasis);
+        txtPuertas.setText(puertas);
+        txtColor.setText(color);
+        txtEmision.setText(emision);
+        txtMotor.setText(motor);
+        txtPrecioAdq.setText(precio);
+    }//GEN-LAST:event_tbVehiculosMouseClicked
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        // TODO add your handling code here:
+        if (txtIdVehiculo.getText() == "0") {
+            JOptionPane.showMessageDialog(null, "No hay vehículo seleccionado");
+        } else {
+            VehiculoDao carroDao = new VehiculoDao();
+            Vehiculo carro = new Vehiculo();
+            carro.setId(Integer.parseInt(txtIdVehiculo.getText()));
+            carroDao.eliminarVehiculo(carro);
+            MotrarVehiculos();
+            Limpiar();
+        }
+    }//GEN-LAST:event_btnEliminarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -390,11 +612,8 @@ public class crudVehiculo extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -404,6 +623,9 @@ public class crudVehiculo extends javax.swing.JFrame {
     private javax.swing.JTextField txtChasis;
     private javax.swing.JTextField txtColor;
     private javax.swing.JTextField txtEmision;
+    private javax.swing.JLabel txtIdMarca;
+    private javax.swing.JLabel txtIdModelo;
+    private javax.swing.JLabel txtIdVehiculo;
     private javax.swing.JTextField txtMarca;
     private javax.swing.JTextField txtModelo;
     private javax.swing.JTextField txtMotor;

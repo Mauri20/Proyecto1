@@ -164,4 +164,22 @@ public class ProveedorDao {
             JOptionPane.showMessageDialog(null, "Error al eliminar " + e);
         }
     }
+    
+    public ArrayList<Proveedor> mostrarProveedoresMarca(int IdMarca){
+        ArrayList<Proveedor> listadoProv = new ArrayList<Proveedor>();
+        try {
+            CallableStatement state = con.prepareCall("call sp_s_MarcaProveedor(?);");
+            state.setInt("pIdMarca", IdMarca);
+             ResultSet res = state.executeQuery();
+            while (res.next()) {
+                Proveedor prov = new Proveedor();
+                prov.setId(res.getInt("idProveedor"));
+                prov.setNombre(res.getString("Nombre"));
+                listadoProv.add(prov);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "No se pudieron cargar los Proveedores " + e);
+        }
+        return listadoProv;
+    }
 }

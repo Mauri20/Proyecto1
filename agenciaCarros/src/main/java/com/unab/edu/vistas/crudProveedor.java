@@ -104,6 +104,7 @@ public class crudProveedor extends javax.swing.JFrame {
             model.removeRow(i);
         }
     }
+    
     String ValueMember[];
     int contador = 1;
 
