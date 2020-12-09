@@ -28,7 +28,7 @@ public class crudProveedor extends javax.swing.JFrame {
      * Creates new form crudProveedor
      */
     Marca marc;
-
+ // tabla mostrar proveedor 
     public crudProveedor() {
         initComponents();
         setLocationRelativeTo(this);
@@ -65,6 +65,7 @@ public class crudProveedor extends javax.swing.JFrame {
         tbMarcas2.setModel(modeloTabla);
     }
 
+    // metodo de mostrar proveedor 
     void MostrarProveedores() {
         String TITULOS[] = {"ID", "NOMBRE", "CONTACTO", "DIRECCION", "TELÉFONO", "CORREO", "NIT", "NRC"};
         DefaultTableModel modeloTabla = new DefaultTableModel(null, TITULOS);
