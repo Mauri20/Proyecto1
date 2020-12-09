@@ -17,6 +17,7 @@ public class MarcaDao {
     Conexion cn = new Conexion();
     Connection con = cn.retornarConexion();
 
+    //Metodos de acceso a la base de datos
     public void agregarMarca(Marca marca) {
         try {
             CallableStatement statement = con.prepareCall("call SP_I_Marca(?)");
