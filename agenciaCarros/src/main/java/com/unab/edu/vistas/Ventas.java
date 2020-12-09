@@ -14,7 +14,7 @@ import com.unab.edu.entidades.Usuario;
  * @author Oscar
  */
 public class Ventas extends javax.swing.JFrame {
-
+// metodo estatico y declaracion de variable asignada
     public static Usuario usuar;
     int opcion = 0;
     /**
@@ -254,6 +254,7 @@ public class Ventas extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    // creacion de menu 
     private void lblMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMenuMouseClicked
         crudMenuUsuario menu = new crudMenuUsuario();
         menu.setVisible(true);
