@@ -1,4 +1,4 @@
-
+//Review ready
 package com.unab.edu.dao;
 import com.unab.edu.conexion.Conexion;
 import com.unab.edu.entidades.Usuario;
@@ -23,7 +23,7 @@ public class UsuarioDao {
     
     
     
-    //SP_I_USUARIO---COMPLETADO!
+    //SP_I_USUARIO--COMPLETADO!
     public void agregarUsuario(Usuario usuario){
       try {
             CallableStatement statement = con.prepareCall("call SP_I_Usuario(?,?,?,?,?)");
@@ -38,6 +38,7 @@ public class UsuarioDao {
             statement.execute();
             con.close();
             
+            
             JOptionPane.showMessageDialog(null, "DATOS REGISTRADOS!");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "ERROR AL REGISTRAR LOS DATOS");
@@ -48,7 +49,7 @@ public class UsuarioDao {
     
     
     
-    //SP_U_USUARIO---COMPLETADO!
+    //SP_U_USUARIO--COMPLETADO!
     public void actualizarUsuario(Usuario usuario) {
         try {
             CallableStatement statement = con.prepareCall("call SP_U_Usuario(?,?,?,?,?)");
@@ -72,7 +73,7 @@ public class UsuarioDao {
    
     
     
-    //SP_D_USUARIO---COMPLETADO!
+    //SP_D_USUARIO--COMPLETADO!
     public void eliminarUsuario(Usuario usuario) {
         
          try {
@@ -93,7 +94,7 @@ public class UsuarioDao {
     
     
     
-    //SP_S_USUARIO---COMPLETADO!
+    //SP_S_USUARIO--COMPLETADO!
      public ArrayList<Usuario> MostrarUsuario() {
         var listado = new ArrayList<Usuario>();
         
@@ -125,21 +126,29 @@ public class UsuarioDao {
      
      
      
-     //SP_S_INGRESAR---COMPLETADO!
+     //SP_S_INGRESAR--COMPLETADO!:para el ingreso
      public Usuario Login(Usuario user) {
         Usuario usu = new Usuario();
+        
         try {
+            
             CallableStatement statement = con.prepareCall("call SP_S_Ingresar(?,?,?);");
+            
+            
             statement.setString("pUsuario", user.getUsuario());
             statement.setString("pPass", user.getPass());
-            statement.setString("pTipo", user.getTipo());
+            statement.setString("pTipo", user.getTipo());      
             ResultSet result = statement.executeQuery();
+            
+            
             while (result.next()) {
                 usu.setIdUsuario(result.getInt("idUsuario"));
                 usu.setUsuario(result.getString("Usuario"));
                 usu.setPass(result.getString("Pass"));
-                usu.setTipo(result.getString("Tipo"));
+                usu.setTipo(result.getString("Tipo"));                        
             }
+            
+            
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "No se encontró el usuario" + e);
         }

@@ -5,8 +5,7 @@ import com.unab.edu.entidades.Modelo;
 import com.unab.edu.vistas.crudModel;
 import java.sql.CallableStatement;
 import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -19,6 +18,8 @@ public class ModeloDao {
     Conexion cn = new Conexion();
     Connection con = cn.retornarConexion();
 
+    
+    //Metodos de acceso a la base de datos
     public void agregarModelo(Modelo modelo) {
         try {
             CallableStatement statement = con.prepareCall("call SP_I_Modelo(?)");

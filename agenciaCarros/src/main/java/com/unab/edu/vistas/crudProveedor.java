@@ -28,7 +28,7 @@ public class crudProveedor extends javax.swing.JFrame {
      * Creates new form crudProveedor
      */
     Marca marc;
-
+ // tabla mostrar proveedor 
     public crudProveedor() {
         initComponents();
         setLocationRelativeTo(this);
@@ -65,6 +65,7 @@ public class crudProveedor extends javax.swing.JFrame {
         tbMarcas2.setModel(modeloTabla);
     }
 
+    // metodo de mostrar proveedor 
     void MostrarProveedores() {
         String TITULOS[] = {"ID", "NOMBRE", "CONTACTO", "DIRECCION", "TELÉFONO", "CORREO", "NIT", "NRC"};
         DefaultTableModel modeloTabla = new DefaultTableModel(null, TITULOS);
@@ -88,7 +89,7 @@ public class crudProveedor extends javax.swing.JFrame {
         int IdProveedor = Integer.parseInt(String.valueOf(tbProveedores.getValueAt(0, 0)));
         MostrarMarcas(IdProveedor);
     }
-
+// metodo limpiar 
     void Limpiar() {
         txtIdProveedor.setText("0");
         txtNombre.setText("");
@@ -107,7 +108,7 @@ public class crudProveedor extends javax.swing.JFrame {
     
     String ValueMember[];
     int contador = 1;
-
+// metodo de el combobox
     void DisplayMarcas() {
         DefaultComboBoxModel cbodefault = new DefaultComboBoxModel();
         MarcaDao mark = new MarcaDao();
@@ -349,10 +350,10 @@ public class crudProveedor extends javax.swing.JFrame {
                         .addComponent(cboMarcas, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnAdd))
-                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
                             .addComponent(jLabel11)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGap(125, 125, 125)
                             .addComponent(btnRemove, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(23, 23, 23))
@@ -389,23 +390,23 @@ public class crudProveedor extends javax.swing.JFrame {
                             .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtContacto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addComponent(txtIdProveedor)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(0, 28, Short.MAX_VALUE)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel6)
+                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel11)
+                                .addComponent(jLabel7))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addGap(0, 27, Short.MAX_VALUE)
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel6)
-                                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jLabel11)
-                                        .addComponent(jLabel7))))
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
+                                .addGap(2, 2, 2)
+                                .addComponent(txtIdProveedor))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnRemove)))
-                        .addGap(18, 18, 18)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -435,7 +436,7 @@ public class crudProveedor extends javax.swing.JFrame {
                     .addComponent(btnGuardar)
                     .addComponent(btnElminar)
                     .addComponent(btnLimpiar))
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         jPanel3.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 860, 410));
@@ -715,7 +716,7 @@ public class crudProveedor extends javax.swing.JFrame {
             tbMarcas.setModel(modelo);
         }
     }//GEN-LAST:event_btnLlevarProveedorActionPerformed
-
+// boton eliminar
     private void btnElminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnElminarActionPerformed
         // TODO add your handling code here:
         int idProveedor = Integer.parseInt(txtIdProveedor.getText());
@@ -732,7 +733,7 @@ public class crudProveedor extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_btnElminarActionPerformed
-
+// metodo mouseclicked para la tabla proveedor
     private void tbProveedoresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbProveedoresMouseClicked
         // TODO add your handling code here:
         int fila = tbProveedores.getSelectedRow();

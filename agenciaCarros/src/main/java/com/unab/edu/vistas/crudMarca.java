@@ -68,7 +68,7 @@ public class crudMarca extends javax.swing.JFrame {
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel1.setText("Nombre Marca");
+        jLabel1.setText("Nombre de Marca:");
 
         btnGuardar.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         btnGuardar.setText("Guardar");
@@ -89,7 +89,7 @@ public class crudMarca extends javax.swing.JFrame {
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel2.setText("Id Marca");
+        jLabel2.setText("Id Marca:");
 
         btnLimpiar.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         btnLimpiar.setText("Limpiar");
@@ -99,6 +99,8 @@ public class crudMarca extends javax.swing.JFrame {
             }
         });
 
+        lblMenu.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        lblMenu.setForeground(new java.awt.Color(204, 204, 204));
         lblMenu.setText("Menu");
         lblMenu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -145,7 +147,7 @@ public class crudMarca extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGuardar)
                     .addComponent(btnEliminar)
