@@ -70,9 +70,8 @@ public class ModeloDao {
             ResultSet res = statement.executeQuery();
             while (res.next()) {
                 Modelo model = new Modelo();
-                model.setId(res.getInt("idModelo"));
-                model.setNombreModelo(res.getString("Nombre"));
-
+                model.setId(res.getInt("idMarcaModelo"));
+                model.setNombreModelo(res.getString("Modelo"));
                 listado.add(model);
             }
         } catch (Exception e) {
