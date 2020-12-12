@@ -176,7 +176,7 @@ public class crudMenuAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnClienteActionPerformed
 
     private void btnVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVentaActionPerformed
-        Ventas venta = new Ventas();
+        crudCompras venta = new crudCompras();
         venta.setVisible(true);
     }//GEN-LAST:event_btnVentaActionPerformed
 

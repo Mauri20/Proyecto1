@@ -10,6 +10,7 @@ com\unab\edu\vistas\crudMenuAdmin$4.class
 com\unab\edu\vistas\crudEmpleado$4.class
 com\unab\edu\vistas\crudProveedor$8.class
 com\unab\edu\vistas\crudCliente.class
+com\unab\edu\vistas\crudVentas$1.class
 com\unab\edu\dao\MarcaDao.class
 com\unab\edu\vistas\crudMenuAdmin.class
 com\unab\edu\entidades\Modelo.class
@@ -20,7 +21,6 @@ com\unab\edu\vistas\crudEmpleado$1.class
 com\unab\edu\vistas\crudVehiculo$3.class
 com\unab\edu\vistas\crudModel$3.class
 com\unab\edu\vistas\crudVehiculo.class
-com\unab\edu\vistas\Ventas$1.class
 com\unab\edu\dao\VehiculoDao.class
 com\unab\edu\vistas\crudMenuUsuario$1.class
 com\unab\edu\vistas\crudVehiculo$5.class
@@ -38,7 +38,6 @@ com\unab\edu\entidades\Marca.class
 com\unab\edu\dao\UsuarioDao.class
 com\unab\edu\vistas\crudMenuAdmin$9.class
 com\unab\edu\vistas\crudModel$2.class
-com\unab\edu\vistas\Ventas.class
 com\unab\edu\vistas\crudMarca$6.class
 com\unab\edu\entidades\Venta.class
 com\unab\edu\vistas\crudUsuario$1.class
@@ -69,10 +68,10 @@ com\unab\edu\vistas\crudMenuAdmin$5.class
 com\unab\edu\vistas\crudMenuUsuario.class
 com\unab\edu\vistas\crudMarca$4.class
 com\unab\edu\vistas\crudProveedor.class
-com\unab\edu\vistas\Ventas$3.class
 com\unab\edu\vistas\crudCliente$4.class
 com\unab\edu\vistas\Login.class
 com\unab\edu\vistas\crudUsuario$9.class
+com\unab\edu\vistas\crudVentas.class
 com\unab\edu\vistas\crudModel$6.class
 com\unab\edu\dao\ClienteDao.class
 com\unab\edu\entidades\Proveedor.class
@@ -90,7 +89,6 @@ com\unab\edu\vistas\crudEmpleado$6.class
 com\unab\edu\vistas\crudMarca$2.class
 com\unab\edu\vistas\crudVehiculo$1.class
 com\unab\edu\vistas\crudUsuario$10.class
-com\unab\edu\vistas\Ventas$2.class
 com\unab\edu\vistas\crudModel$5.class
 com\unab\edu\entidades\Empleado.class
 com\unab\edu\entidades\Tablas.class
