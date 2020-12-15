@@ -22,4 +22,5 @@ public class Vehiculo {
     private double PrecioAdq;
     private Proveedor Proveedor;
     private Modelo Modelo;
+    private int Existencia;
 }

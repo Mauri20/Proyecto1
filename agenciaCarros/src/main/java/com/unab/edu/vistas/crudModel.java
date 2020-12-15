@@ -49,6 +49,7 @@ public class crudModel extends javax.swing.JFrame {
 
         this.setContentPane(fondo);
         initComponents();
+        this.setLocationRelativeTo(this);
         MostrarTablaModelo();
         DisplayMember();
 
@@ -94,7 +95,7 @@ public class crudModel extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tbModelo = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         tbMostrarDatos.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
 

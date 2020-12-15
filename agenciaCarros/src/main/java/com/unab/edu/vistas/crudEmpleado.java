@@ -132,7 +132,7 @@ public class crudEmpleado extends javax.swing.JFrame {
         tbEmpleados = new javax.swing.JTable();
         jLabel11 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Empleado");
 
         jTbMenu.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N

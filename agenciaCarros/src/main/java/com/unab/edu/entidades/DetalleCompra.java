@@ -5,8 +5,6 @@
  */
 package com.unab.edu.entidades;
 
-import java.util.ArrayList;
-import java.util.Date;
 import lombok.Data;
 
 /**
@@ -14,14 +12,8 @@ import lombok.Data;
  * @author Mauricio
  */
 @Data
-public class Compra {
-    int IdCompra;
-    String Codigo;
-    Date Fecha;
-    String Tipo;
-    Double Subtotal;
-    Double Iva;
-    Double Total;
-    ArrayList<DetalleCompra> DetalleCompra;
-    Usuario usuario;
+public class DetalleCompra {
+    private int IdDetalleCompra;
+    private int Cantidad;
+    private Vehiculo Vehiculo;
 }

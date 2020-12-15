@@ -70,7 +70,7 @@ public class crudProveedor extends javax.swing.JFrame {
         String TITULOS[] = {"ID", "NOMBRE", "CONTACTO", "DIRECCION", "TELÉFONO", "CORREO", "NIT", "NRC"};
         DefaultTableModel modeloTabla = new DefaultTableModel(null, TITULOS);
         ProveedorDao provDao = new ProveedorDao();
-        var listaEmpleados = provDao.mostrarEmpleados();
+        var listaEmpleados = provDao.mostrarProveedores();
         String filas[] = new String[8];
 
         for (var iterarDatos : listaEmpleados) {
@@ -180,7 +180,7 @@ public class crudProveedor extends javax.swing.JFrame {
         btnLlevarProveedor = new javax.swing.JButton();
         jLabel22 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Proveedor");
 
         Menu.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
@@ -391,7 +391,7 @@ public class crudProveedor extends javax.swing.JFrame {
                             .addComponent(txtContacto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(0, 28, Short.MAX_VALUE)
+                        .addGap(0, 37, Short.MAX_VALUE)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel6)
                             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -406,7 +406,6 @@ public class crudProveedor extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnRemove)))
                         .addGap(0, 0, Short.MAX_VALUE)))
-                .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -436,7 +435,7 @@ public class crudProveedor extends javax.swing.JFrame {
                     .addComponent(btnGuardar)
                     .addComponent(btnElminar)
                     .addComponent(btnLimpiar))
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         jPanel3.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 860, 410));

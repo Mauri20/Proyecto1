@@ -105,7 +105,7 @@ public class ProveedorDao {
         }
     }
 
-    public ArrayList<Proveedor> mostrarEmpleados() {
+    public ArrayList<Proveedor> mostrarProveedores() {
         var listado = new ArrayList<Proveedor>();
         try {
             CallableStatement statement = con.prepareCall("call sp_s_Proveedor;");

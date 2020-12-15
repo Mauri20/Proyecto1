@@ -3,15 +3,18 @@ C:\Users\Mauricio\Documents\GitHub\Proyecto1\agenciaCarros\src\main\java\com\una
 C:\Users\Mauricio\Documents\GitHub\Proyecto1\agenciaCarros\src\main\java\com\unab\edu\entidades\Proveedor.java
 C:\Users\Mauricio\Documents\GitHub\Proyecto1\agenciaCarros\src\main\java\com\unab\edu\entidades\Tablas.java
 C:\Users\Mauricio\Documents\GitHub\Proyecto1\agenciaCarros\src\main\java\com\unab\edu\entidades\Marca.java
+C:\Users\Mauricio\Documents\GitHub\Proyecto1\agenciaCarros\src\main\java\com\unab\edu\dao\CompraDao.java
 C:\Users\Mauricio\Documents\GitHub\Proyecto1\agenciaCarros\src\main\java\com\unab\edu\dao\ClienteDao.java
 C:\Users\Mauricio\Documents\GitHub\Proyecto1\agenciaCarros\src\main\java\com\unab\edu\dao\MarcaDao.java
 C:\Users\Mauricio\Documents\GitHub\Proyecto1\agenciaCarros\src\main\java\com\unab\edu\dao\ModeloDao.java
 C:\Users\Mauricio\Documents\GitHub\Proyecto1\agenciaCarros\src\main\java\com\unab\edu\entidades\Modelo.java
+C:\Users\Mauricio\Documents\GitHub\Proyecto1\agenciaCarros\src\main\java\com\unab\edu\entidades\DetalleCompra.java
 C:\Users\Mauricio\Documents\GitHub\Proyecto1\agenciaCarros\src\main\java\com\unab\edu\entidades\Fondo.java
 C:\Users\Mauricio\Documents\GitHub\Proyecto1\agenciaCarros\src\main\java\com\unab\edu\conexion\Conexion.java
 C:\Users\Mauricio\Documents\GitHub\Proyecto1\agenciaCarros\src\main\java\com\unab\edu\vistas\crudUsuario.java
 C:\Users\Mauricio\Documents\GitHub\Proyecto1\agenciaCarros\src\main\java\com\unab\edu\dao\UsuarioDao.java
 C:\Users\Mauricio\Documents\GitHub\Proyecto1\agenciaCarros\src\main\java\com\unab\edu\vistas\crudMenuUsuario.java
+C:\Users\Mauricio\Documents\GitHub\Proyecto1\agenciaCarros\src\main\java\com\unab\edu\vistas\crudCompras.java
 C:\Users\Mauricio\Documents\GitHub\Proyecto1\agenciaCarros\src\main\java\com\unab\edu\entidades\Usuario.java
 C:\Users\Mauricio\Documents\GitHub\Proyecto1\agenciaCarros\src\main\java\com\unab\edu\dao\EmpleadoDao.java
 C:\Users\Mauricio\Documents\GitHub\Proyecto1\agenciaCarros\src\main\java\com\unab\edu\entidades\Cliente.java
@@ -21,7 +24,7 @@ C:\Users\Mauricio\Documents\GitHub\Proyecto1\agenciaCarros\src\main\java\com\una
 C:\Users\Mauricio\Documents\GitHub\Proyecto1\agenciaCarros\src\main\java\com\unab\edu\vistas\crudCliente.java
 C:\Users\Mauricio\Documents\GitHub\Proyecto1\agenciaCarros\src\main\java\com\unab\edu\dao\VehiculoDao.java
 C:\Users\Mauricio\Documents\GitHub\Proyecto1\agenciaCarros\src\main\java\com\unab\edu\vistas\crudVehiculo.java
-C:\Users\Mauricio\Documents\GitHub\Proyecto1\agenciaCarros\src\main\java\com\unab\edu\vistas\crudVentas.java
+C:\Users\Mauricio\Documents\GitHub\Proyecto1\agenciaCarros\src\main\java\com\unab\edu\entidades\Compra.java
 C:\Users\Mauricio\Documents\GitHub\Proyecto1\agenciaCarros\src\main\java\com\unab\edu\entidades\Vehiculo.java
 C:\Users\Mauricio\Documents\GitHub\Proyecto1\agenciaCarros\src\main\java\com\unab\edu\entidades\Empleado.java
 C:\Users\Mauricio\Documents\GitHub\Proyecto1\agenciaCarros\src\main\java\com\unab\edu\vistas\crudMarca.java
