@@ -69,41 +69,52 @@ public class MenuAdmin extends javax.swing.JFrame {
             }
         });
 
+        btnProveedor.setBackground(new java.awt.Color(102, 102, 102));
         btnProveedor.setText("Proveedor");
+        btnProveedor.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnProveedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnProveedorActionPerformed(evt);
             }
         });
 
+        btnUsuario.setBackground(new java.awt.Color(102, 102, 102));
         btnUsuario.setText("Usuario");
+        btnUsuario.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnUsuarioActionPerformed(evt);
             }
         });
 
+        btnEmpleado.setBackground(new java.awt.Color(102, 102, 102));
         btnEmpleado.setText("Empleado");
+        btnEmpleado.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnEmpleado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEmpleadoActionPerformed(evt);
             }
         });
 
+        btnMarca.setBackground(new java.awt.Color(102, 102, 102));
         btnMarca.setText("Marca");
+        btnMarca.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnMarca.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMarcaActionPerformed(evt);
             }
         });
 
+        btnModelo.setBackground(new java.awt.Color(102, 102, 102));
         btnModelo.setText("Modelo");
+        btnModelo.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnModelo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnModeloActionPerformed(evt);
             }
         });
 
+        btnCliente.setBackground(new java.awt.Color(102, 102, 102));
         btnCliente.setText("Cliente");
         btnCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -111,7 +122,9 @@ public class MenuAdmin extends javax.swing.JFrame {
             }
         });
 
+        btnVenta.setBackground(new java.awt.Color(102, 102, 102));
         btnVenta.setText("Venta");
+        btnVenta.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnVenta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVentaActionPerformed(evt);
@@ -152,7 +165,7 @@ public class MenuAdmin extends javax.swing.JFrame {
                     .addComponent(btnUsuario)
                     .addComponent(btnVenta)
                     .addComponent(btnModelo, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEmpleado)
                     .addComponent(btnCliente))

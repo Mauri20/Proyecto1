@@ -64,14 +64,18 @@ public class MenuUsuario extends javax.swing.JFrame {
             }
         });
 
+        btnCliente.setBackground(new java.awt.Color(102, 102, 102));
         btnCliente.setText("Cliente");
+        btnCliente.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnClienteActionPerformed(evt);
             }
         });
 
+        btnVenta.setBackground(new java.awt.Color(102, 102, 102));
         btnVenta.setText("Venta");
+        btnVenta.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnVenta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVentaActionPerformed(evt);
