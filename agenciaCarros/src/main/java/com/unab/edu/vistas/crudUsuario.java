@@ -21,8 +21,12 @@ public class crudUsuario extends javax.swing.JFrame {
     
     
     String valueMember[];
+    String valueMember2[];
     int contador = 1;
-
+    int contador2 =1; 
+    
+    
+ 
     
     //cod. for comboxs
     void displayMember() {
@@ -44,12 +48,32 @@ public class crudUsuario extends javax.swing.JFrame {
         cbIdEmpleado.setModel(cbdeault);
     }
     
+     void displayMember2() {
+        DefaultComboBoxModel cbdeault2 = new DefaultComboBoxModel();
+        UsuarioDao claseUsuarioDao = new UsuarioDao();
+        ArrayList<Usuario> Usuarios = claseUsuarioDao.MostrarUsuario();
+        valueMember2 = new String[Usuarios.size()+1];
+        String filas[] = new String[5];
+        cbdeault2.addElement("");
+
+        for (var IterarDatosUsuario : Usuarios) {
+            filas[0] = String.valueOf(IterarDatosUsuario.getId());
+            filas[1] = IterarDatosUsuario.getTipo();
+            valueMember2[contador2] = filas[0];
+            cbdeault2.addElement(filas[1]);
+            contador2++;
+
+        }
+        cbTipo.setModel(cbdeault2);
+    }
+    
     
     
     public crudUsuario() {
         initComponents();
         MostrarUsuario();
         displayMember();
+        displayMember2();
     }
 
     
