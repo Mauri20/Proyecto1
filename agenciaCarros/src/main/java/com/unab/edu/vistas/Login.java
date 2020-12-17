@@ -146,10 +146,10 @@ public class Login extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 290, 270));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 290, 270));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/11.jpg"))); // NOI18N
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 300, 370));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 310, 370));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -198,13 +198,13 @@ public class Login extends javax.swing.JFrame {
                 usuar=user;
                 if (Integer.parseInt(user.getTipo())== 1) {
                     
-                    crudMenuAdmin formAbonos = new crudMenuAdmin();
+                    MenuAdmin formAbonos = new MenuAdmin();
                     formAbonos.setVisible(true);
                     this.hide();
                 } else if(Integer.parseInt(user.getTipo()) == 2){
                     
                     
-                    crudMenuUsuario formCargos = new crudMenuUsuario();
+                    MenuUsuario formCargos = new MenuUsuario();
                     formCargos.setVisible(true);
                     this.hide();
                 }

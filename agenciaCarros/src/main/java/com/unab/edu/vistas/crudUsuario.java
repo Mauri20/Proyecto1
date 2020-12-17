@@ -451,7 +451,7 @@ public class crudUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_cbIdEmpleadoActionPerformed
 
     private void lblMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMenuMouseClicked
-        crudMenuAdmin menu = new crudMenuAdmin();
+        MenuAdmin menu = new MenuAdmin();
         menu.setVisible(true);
         this.hide();
     }//GEN-LAST:event_lblMenuMouseClicked

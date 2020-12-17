@@ -518,13 +518,13 @@ public class crudCliente extends javax.swing.JFrame {
                 
                 if (Integer.parseInt(usuar.getTipo())== 1) {
                     
-                    crudMenuAdmin formAbonos = new crudMenuAdmin();
+                    MenuAdmin formAbonos = new MenuAdmin();
                     formAbonos.setVisible(true);
                     this.hide();
                 } else if(Integer.parseInt(usuar.getTipo()) == 2){
                     
                     
-                    crudMenuUsuario formCargos = new crudMenuUsuario();
+                    MenuUsuario formCargos = new MenuUsuario();
                     formCargos.setVisible(true);
                     this.hide();
                 }
