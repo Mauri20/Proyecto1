@@ -32,6 +32,7 @@ public class crudProveedor extends javax.swing.JFrame {
     public crudProveedor() {
         initComponents();
         setLocationRelativeTo(this);
+        txtIdProveedor.setVisible(false);
         DisplayMarcas();
         MostrarProveedores();
         String TITULOS[] = {"NOMBRE", "ID"};

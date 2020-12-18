@@ -35,6 +35,9 @@ public class crudVehiculo extends javax.swing.JFrame {
         this.setContentPane(fondo);
         initComponents();
         this.setLocationRelativeTo(this);
+        txtIdVehiculo.setVisible(false);
+        txtIdMarca.setVisible(false);
+        txtIdModelo.setVisible(false);
         btnBuscar.setBackground(new Color(0, 0, 0, 0));
         MotrarVehiculos();
         Tablas.removeBackground(tbVehiculos, jScrollPane1);

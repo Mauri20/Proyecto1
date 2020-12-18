@@ -39,6 +39,7 @@ public class crudCompras extends javax.swing.JFrame {
         user.setIdUsuario(1);
         this.setLocationRelativeTo(this);
         txtIdCarro.setVisible(false);
+        txtIdCompra.setVisible(false);
 
         String TITULOS[] = {"ID", "MODELO", "MARCA", "PUERTAS", "COLOR", "CANTIDAD", "PRECIO", "SUBTOTAL"};
         DefaultTableModel modelo = new DefaultTableModel(null, TITULOS);
