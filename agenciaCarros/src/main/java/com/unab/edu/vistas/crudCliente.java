@@ -34,10 +34,10 @@ public class crudCliente extends javax.swing.JFrame {
         setLocationRelativeTo(this);
         MostrarClientes();
         //Ajustar el contenido de la Tabla
-        Tablas.resizeColumnWidth(tbClientes,26,81);
-        //CODIGO PARA VOLVER TRANSPARENTE LA TABLA
-        Tablas.removeBackground(tbClientes, jScrollPane1);
         
+        //CODIGO PARA VOLVER TRANSPARENTE LA TABLA
+        Tablas.removeBackground(tbClientes, jScrollPane3);
+        Tablas.resizeColumnWidth(tbClientes,26,81);
     }
     
       void MostrarClientes() {
@@ -373,6 +373,7 @@ public class crudCliente extends javax.swing.JFrame {
         jScrollPane3.setOpaque(false);
 
         tbClientes.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
+        tbClientes.setForeground(new java.awt.Color(255, 255, 255));
         tbClientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -384,6 +385,7 @@ public class crudCliente extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tbClientes.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
         tbClientes.setOpaque(false);
         tbClientes.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -396,20 +398,20 @@ public class crudCliente extends javax.swing.JFrame {
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 546, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 601, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+            .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel5.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 540, 410));
+        jPanel5.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 620, 410));
 
         jLabel22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/6.jpg"))); // NOI18N
         jPanel5.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 620, 410));
@@ -464,12 +466,14 @@ public class crudCliente extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Debe completar los Campos!", "Advertencia", 2);
         } else if (lblIdCliente.getText().isEmpty()) {
             clienteDao.AgregarCliente(cliente);
+            Limpiar();
         } else {
             cliente.setIdCliente(Integer.parseInt(lblIdCliente.getText()));
             clienteDao.ActualizarCliente(cliente);
+            Limpiar();
         }
         MostrarClientes();
-        Limpiar();
+        
                                
     }//GEN-LAST:event_btnGuardarClienteActionPerformed
 

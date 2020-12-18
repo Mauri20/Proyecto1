@@ -152,6 +152,7 @@ public class crudCompras extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(0, 51, 51));
         jPanel3.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel3.setOpaque(false);
 
         jLabel2.setFont(new java.awt.Font("Verdana", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));

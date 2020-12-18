@@ -72,20 +72,24 @@
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="btnProveedor" min="-2" pref="101" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
+                          <Component id="btnEmpleado" alignment="0" min="-2" pref="101" max="-2" attributes="0"/>
+                          <Component id="btnUsuario" alignment="0" min="-2" pref="101" max="-2" attributes="0"/>
+                          <Component id="btnProveedor" alignment="0" min="-2" pref="101" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="btnVehiculo" min="-2" pref="101" max="-2" attributes="0"/>
+                              <EmptySpace pref="67" max="32767" attributes="0"/>
                               <Component id="btnMarca" min="-2" pref="101" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="btnUsuario" min="-2" pref="101" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
                               <Component id="btnVenta" min="-2" pref="101" max="-2" attributes="0"/>
-                              <EmptySpace pref="70" max="32767" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                               <Component id="btnModelo" min="-2" pref="101" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="btnEmpleado" min="-2" pref="101" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Component id="btnCompra" min="-2" pref="101" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
                               <Component id="btnCliente" min="-2" pref="101" max="-2" attributes="0"/>
                           </Group>
@@ -100,17 +104,19 @@
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="btnProveedor" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="btnMarca" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnVehiculo" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="btnUsuario" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnVenta" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="btnModelo" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                          <Component id="btnVenta" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="45" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="btnEmpleado" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="btnCliente" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnCompra" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
                   </Group>
@@ -209,12 +215,28 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnClienteActionPerformed"/>
               </Events>
             </Component>
+            <Component class="javax.swing.JButton" name="btnCompra">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="66" green="66" red="66" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Compras"/>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.SoftBevelBorderInfo">
+                    <BevelBorder/>
+                  </Border>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCompraActionPerformed"/>
+              </Events>
+            </Component>
             <Component class="javax.swing.JButton" name="btnVenta">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="66" green="66" red="66" type="rgb"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Venta"/>
+                <Property name="text" type="java.lang.String" value="Ventas"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.SoftBevelBorderInfo">
                     <BevelBorder/>
@@ -223,6 +245,22 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVentaActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnVehiculo">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="66" green="66" red="66" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Vehiculos"/>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.SoftBevelBorderInfo">
+                    <BevelBorder/>
+                  </Border>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVehiculoActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>

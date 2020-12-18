@@ -3,6 +3,8 @@ package com.unab.edu.vistas;
 import com.unab.edu.dao.EmpleadoDao;
 import com.unab.edu.dao.UsuarioDao;
 import com.unab.edu.entidades.Empleado;
+import com.unab.edu.entidades.Fondo;
+import com.unab.edu.entidades.Tablas;
 import com.unab.edu.entidades.Usuario;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
@@ -18,15 +20,11 @@ public class crudUsuario extends javax.swing.JFrame {
     /**
      * Creates new form crudUsuario
      */
-    
+    Fondo fondo= new Fondo();
     
     String valueMember[];
     String valueMember2[];
     int contador = 1;
-    int contador2 =1; 
-    
-    
- 
     
     //cod. for comboxs
     void displayMember() {
@@ -48,53 +46,49 @@ public class crudUsuario extends javax.swing.JFrame {
         cbIdEmpleado.setModel(cbdeault);
     }
     
-     void displayMember2() {
+    void displayMember2() {
         DefaultComboBoxModel cbdeault2 = new DefaultComboBoxModel();
-        UsuarioDao claseUsuarioDao = new UsuarioDao();
-        ArrayList<Usuario> Usuarios = claseUsuarioDao.MostrarUsuario();
-        valueMember2 = new String[Usuarios.size()+1];
-        String filas[] = new String[5];
-        cbdeault2.addElement("");
-
-        for (var IterarDatosUsuario : Usuarios) {
-            filas[0] = String.valueOf(IterarDatosUsuario.getId());
-            filas[1] = IterarDatosUsuario.getTipo();
-            valueMember2[contador2] = filas[0];
-            cbdeault2.addElement(filas[1]);
-            contador2++;
-
-        }
+        valueMember2 = new String[2];
+        cbdeault2.addElement("Administrador");
+        cbdeault2.addElement("Usuario Estándar");
+        valueMember2[0]="1";
+        valueMember2[1]="2";
         cbTipo.setModel(cbdeault2);
     }
     
     
-    
+    String passUpdate="";
     public crudUsuario() {
+        this.setContentPane(fondo);
         initComponents();
+        this.setLocationRelativeTo(this);
         MostrarUsuario();
         displayMember();
         displayMember2();
+        Tablas.removeBackground(tbUsuarios, jScrollPane1);
+        Tablas.resizeColumnWidth(tbUsuarios, 21, 81);
     }
 
     
     //Para la consulta mostrar --Listo
      void MostrarUsuario() 
      {
-        String TITULOS[] = {"ID", "EMPLEADO", "USUARIO", "PASS", "TIPO"};
+        String TITULOS[] = {"ID", "EMPLEADO","IDEMPLEADO", "USUARIO", "PASS", "TIPO"};
         
         DefaultTableModel modelTabla = new DefaultTableModel(null, TITULOS);
         UsuarioDao claseusuario = new UsuarioDao();
         
         var listaEmpleados = claseusuario.MostrarUsuario();
-        String filas[] = new String[5];
+        String filas[] = new String[6];
             
         for (var iterarDatos : listaEmpleados)
         {
             filas[0] = String.valueOf(iterarDatos.getIdUsuario());
-            filas[1] = String.valueOf(iterarDatos.getId());
-            filas[2] = iterarDatos.getUsuario();
-            filas[3] = iterarDatos.getPass();
-            filas[4] = String.valueOf(iterarDatos.getTipo());
+            filas[1] = String.valueOf(iterarDatos.getNombre());
+            filas[2] = String.valueOf(iterarDatos.getId());
+            filas[3] = iterarDatos.getUsuario();
+            filas[4] = iterarDatos.getPass();
+            filas[5] = String.valueOf(iterarDatos.getTipo());
            
             
             modelTabla.addRow(filas);
@@ -110,10 +104,6 @@ public class crudUsuario extends javax.swing.JFrame {
     private void initComponents() {
 
         jTbDatos = new javax.swing.JTabbedPane();
-        jPanel2 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tbUsuarios = new javax.swing.JTable();
-        btnAyudaTable = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         MesaDeTrabajo = new javax.swing.JPanel();
@@ -122,7 +112,6 @@ public class crudUsuario extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        txtContraseña = new javax.swing.JTextField();
         txtIdUsuario = new javax.swing.JTextField();
         cbIdEmpleado = new javax.swing.JComboBox<>();
         cbTipo = new javax.swing.JComboBox<>();
@@ -132,66 +121,15 @@ public class crudUsuario extends javax.swing.JFrame {
         txtUsuario = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         lblMenu = new javax.swing.JLabel();
-        btnAyuda = new javax.swing.JButton();
+        txtContraseña = new javax.swing.JPasswordField();
         Fondo = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tbUsuarios = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jTbDatos.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-
-        tbUsuarios.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        tbUsuarios.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tbUsuariosMouseClicked(evt);
-            }
-        });
-        jScrollPane1.setViewportView(tbUsuarios);
-
-        btnAyudaTable.setText("Ayuda");
-        btnAyudaTable.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAyudaTableActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnAyudaTable)
-                .addContainerGap(547, Short.MAX_VALUE))
-            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel2Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
-                    .addContainerGap()))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(477, Short.MAX_VALUE)
-                .addComponent(btnAyudaTable)
-                .addContainerGap())
-            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel2Layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 458, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(42, Short.MAX_VALUE)))
-        );
-
-        jTbDatos.addTab("LISTADO", jPanel2);
 
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -266,12 +204,7 @@ public class crudUsuario extends javax.swing.JFrame {
             }
         });
 
-        btnAyuda.setText("Ayuda");
-        btnAyuda.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAyudaActionPerformed(evt);
-            }
-        });
+        txtContraseña.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
 
         javax.swing.GroupLayout MesaDeTrabajoLayout = new javax.swing.GroupLayout(MesaDeTrabajo);
         MesaDeTrabajo.setLayout(MesaDeTrabajoLayout);
@@ -283,38 +216,33 @@ public class crudUsuario extends javax.swing.JFrame {
                     .addGroup(MesaDeTrabajoLayout.createSequentialGroup()
                         .addComponent(lblMenu)
                         .addGap(124, 124, 124)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 151, Short.MAX_VALUE)
-                        .addComponent(btnAyuda))
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(MesaDeTrabajoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtContraseña, javax.swing.GroupLayout.DEFAULT_SIZE, 544, Short.MAX_VALUE))
-                    .addGroup(MesaDeTrabajoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(MesaDeTrabajoLayout.createSequentialGroup()
-                            .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(115, 115, 115)
-                            .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(cbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 543, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtIdUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 544, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cbIdEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 543, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 544, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(MesaDeTrabajoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(txtContraseña, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, MesaDeTrabajoLayout.createSequentialGroup()
+                            .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(115, 115, 115)
+                            .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(cbTipo, javax.swing.GroupLayout.Alignment.LEADING, 0, 543, Short.MAX_VALUE)))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
         MesaDeTrabajoLayout.setVerticalGroup(
             MesaDeTrabajoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(MesaDeTrabajoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(MesaDeTrabajoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(MesaDeTrabajoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lblMenu))
-                    .addComponent(btnAyuda))
+                .addGroup(MesaDeTrabajoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblMenu))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -330,8 +258,8 @@ public class crudUsuario extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -361,6 +289,50 @@ public class crudUsuario extends javax.swing.JFrame {
 
         jTbDatos.addTab("DATOS", jPanel1);
 
+        jPanel2.setOpaque(false);
+
+        tbUsuarios.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        tbUsuarios.setForeground(new java.awt.Color(255, 255, 255));
+        tbUsuarios.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        tbUsuarios.setGridColor(new java.awt.Color(255, 255, 255));
+        tbUsuarios.setOpaque(false);
+        tbUsuarios.setShowGrid(true);
+        tbUsuarios.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbUsuariosMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tbUsuarios);
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 458, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(31, Short.MAX_VALUE))
+        );
+
+        jTbDatos.addTab("LISTADO", jPanel2);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -372,7 +344,9 @@ public class crudUsuario extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTbDatos, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jTbDatos)
+                .addContainerGap())
         );
 
         pack();
@@ -386,32 +360,37 @@ public class crudUsuario extends javax.swing.JFrame {
          jTbDatos.setSelectedIndex(jTbDatos.indexOfComponent(jPanel1));
 
         int fila = tbUsuarios.getSelectedRow();
-
-        
         String idusuario = String.valueOf(tbUsuarios.getValueAt(fila, 0));
-        String idempleado = String.valueOf(tbUsuarios.getValueAt(fila, 1));
-        String usuario = String.valueOf(tbUsuarios.getValueAt(fila, 2));
-        String pass = String.valueOf(tbUsuarios.getValueAt(fila, 3));
-        String tipo = String.valueOf(tbUsuarios.getValueAt(fila, 4));
+        String idempleado = String.valueOf(tbUsuarios.getValueAt(fila, 2));
+        String usuario = String.valueOf(tbUsuarios.getValueAt(fila, 3));
+        String pass = String.valueOf(tbUsuarios.getValueAt(fila, 4));
+        String tipo = String.valueOf(tbUsuarios.getValueAt(fila, 5));
 
-        
         txtIdUsuario.setText(idusuario);
         txtUsuario.setText(usuario);
         txtContraseña.setText(pass);
+        passUpdate=pass;
                     
-        
-        int seleccionadordevista = 0;
-        for(var iterar: valueMember){
-            
-            if (idempleado.equals(iterar)&&(tipo.equals(iterar) ) ) 
-            {
-                
-                cbIdEmpleado.setSelectedIndex(seleccionadordevista);
-                cbTipo.setSelectedIndex(seleccionadordevista);    
-                
+        int seleccionadordeVista = 0;
+        for (var it : valueMember) {
+            if (it == null) {
+                it = "0";
             }
-            seleccionadordevista += 1;
-        }               
+            if (it.trim().equals(idempleado)) {
+                cbIdEmpleado.setSelectedIndex(seleccionadordeVista);
+            }
+            seleccionadordeVista += 1;
+        }
+        int seleccionadordeVista2 = 0;
+        for (var it : valueMember2) {
+            if (it == null) {
+                it = "0";
+            }
+            if (it.trim().equals(tipo)) {
+                cbTipo.setSelectedIndex(seleccionadordeVista2);
+            }
+            seleccionadordeVista2 += 1;
+        }
     }//GEN-LAST:event_tbUsuariosMouseClicked
 
     
@@ -438,7 +417,8 @@ public class crudUsuario extends javax.swing.JFrame {
         txtIdUsuario.setText("");
         txtContraseña.setText("");
         txtUsuario.setText("");
-        cbTipo.setSelectedItem("");
+        cbTipo.setSelectedIndex(0);
+//        JOptionPane.showMessageDialog(null,valueMember2[cbTipo.getSelectedIndex()]);
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
     
@@ -454,9 +434,23 @@ public class crudUsuario extends javax.swing.JFrame {
             usuarioo.setId(Integer.parseInt(valueMember[cbIdEmpleado.getSelectedIndex()]));
             usuarioo.setUsuario(txtUsuario.getText());
             usuarioo.setPass(txtContraseña.getText());
-            usuarioo.setTipo((valueMember[cbTipo.getSelectedIndex()]));
-
-            usuu.agregarUsuario(usuarioo);
+            usuarioo.setTipo((valueMember2[cbTipo.getSelectedIndex()]));
+            if(txtIdUsuario.getText().trim().isEmpty()){
+                usuu.agregarUsuario(usuarioo);
+                btnLimpiar.doClick();
+            }else{
+                usuarioo.setIdUsuario(Integer.parseInt(txtIdUsuario.getText().trim()));
+//                JOptionPane.showMessageDialog(null,passUpdate+"---"+txtContraseña.getText());
+                if(txtContraseña.getText().equals(passUpdate)){
+                    usuu.actualizarUsuario(usuarioo);
+                }else{
+                    usuu.actualizarUsuario(usuarioo, passUpdate);
+                }
+                
+                btnLimpiar.doClick();
+            }
+            MostrarUsuario();
+           
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "error verifica los datos");
@@ -479,14 +473,6 @@ public class crudUsuario extends javax.swing.JFrame {
         menu.setVisible(true);
         this.hide();
     }//GEN-LAST:event_lblMenuMouseClicked
-
-    private void btnAyudaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAyudaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAyudaActionPerformed
-
-    private void btnAyudaTableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAyudaTableActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAyudaTableActionPerformed
 
     /**
      * @param args the command line arguments
@@ -526,8 +512,6 @@ public class crudUsuario extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Fondo;
     private javax.swing.JPanel MesaDeTrabajo;
-    private javax.swing.JButton btnAyuda;
-    private javax.swing.JButton btnAyudaTable;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnLimpiar;
@@ -546,7 +530,7 @@ public class crudUsuario extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTbDatos;
     private javax.swing.JLabel lblMenu;
     private javax.swing.JTable tbUsuarios;
-    private javax.swing.JTextField txtContraseña;
+    private javax.swing.JPasswordField txtContraseña;
     private javax.swing.JTextField txtIdUsuario;
     private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables

@@ -51,7 +51,9 @@ public class MenuAdmin extends javax.swing.JFrame {
         btnMarca = new javax.swing.JButton();
         btnModelo = new javax.swing.JButton();
         btnCliente = new javax.swing.JButton();
+        btnCompra = new javax.swing.JButton();
         btnVenta = new javax.swing.JButton();
+        btnVehiculo = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -122,12 +124,30 @@ public class MenuAdmin extends javax.swing.JFrame {
             }
         });
 
+        btnCompra.setBackground(new java.awt.Color(102, 102, 102));
+        btnCompra.setText("Compras");
+        btnCompra.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnCompra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCompraActionPerformed(evt);
+            }
+        });
+
         btnVenta.setBackground(new java.awt.Color(102, 102, 102));
-        btnVenta.setText("Venta");
+        btnVenta.setText("Ventas");
         btnVenta.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnVenta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVentaActionPerformed(evt);
+            }
+        });
+
+        btnVehiculo.setBackground(new java.awt.Color(102, 102, 102));
+        btnVehiculo.setText("Vehiculos");
+        btnVehiculo.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnVehiculo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVehiculoActionPerformed(evt);
             }
         });
 
@@ -138,18 +158,21 @@ public class MenuAdmin extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(60, 60, 60)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(btnProveedor, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnVehiculo, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
                         .addComponent(btnMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(btnUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(57, 57, 57)
                         .addComponent(btnVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnModelo, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(btnEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
@@ -159,16 +182,18 @@ public class MenuAdmin extends javax.swing.JFrame {
                 .addGap(34, 34, 34)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnProveedor)
-                    .addComponent(btnMarca))
+                    .addComponent(btnMarca)
+                    .addComponent(btnVehiculo))
                 .addGap(38, 38, 38)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnUsuario)
-                    .addComponent(btnVenta)
-                    .addComponent(btnModelo, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnModelo, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnVenta))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnEmpleado)
-                    .addComponent(btnCliente))
+                    .addComponent(btnCliente)
+                    .addComponent(btnCompra))
                 .addGap(66, 66, 66))
         );
 
@@ -226,10 +251,20 @@ public class MenuAdmin extends javax.swing.JFrame {
         cliente.setVisible(true);
     }//GEN-LAST:event_btnClienteActionPerformed
 
-    private void btnVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVentaActionPerformed
+    private void btnCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompraActionPerformed
         crudCompras venta = new crudCompras();
         venta.setVisible(true);
+    }//GEN-LAST:event_btnCompraActionPerformed
+
+    private void btnVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVentaActionPerformed
+        // TODO add your handling code here:
     }//GEN-LAST:event_btnVentaActionPerformed
+
+    private void btnVehiculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVehiculoActionPerformed
+        // TODO add your handling code here:
+        crudVehiculo carro= new crudVehiculo();
+        carro.setVisible(true);
+    }//GEN-LAST:event_btnVehiculoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -276,11 +311,13 @@ public class MenuAdmin extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup GrupoBotones;
     private javax.swing.JButton btnCliente;
+    private javax.swing.JButton btnCompra;
     private javax.swing.JButton btnEmpleado;
     private javax.swing.JButton btnMarca;
     private javax.swing.JButton btnModelo;
     private javax.swing.JButton btnProveedor;
     private javax.swing.JButton btnUsuario;
+    private javax.swing.JButton btnVehiculo;
     private javax.swing.JButton btnVenta;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;

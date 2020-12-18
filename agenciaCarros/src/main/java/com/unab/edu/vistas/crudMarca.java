@@ -2,6 +2,7 @@ package com.unab.edu.vistas;
 
 import com.unab.edu.dao.MarcaDao;
 import com.unab.edu.entidades.Marca;
+import com.unab.edu.entidades.Tablas;
 import java.awt.*;
 import java.util.ArrayList;
 import javax.swing.*;
@@ -16,10 +17,13 @@ public class crudMarca extends javax.swing.JFrame {
     FondoPanel fondo = new FondoPanel();
 
     public crudMarca() {
-
+        
         this.setContentPane(fondo);
         initComponents();
+        this.setLocationRelativeTo(this);
         MostrarTablaMarca();
+        Tablas.removeBackground(tb_Marca, jScrollPane1);
+        Tablas.resizeColumnWidth(tb_Marca, 21, 81);
     }
     
     void MostrarTablaMarca(){
@@ -61,7 +65,7 @@ public class crudMarca extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tb_Marca = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         tb_Mostrar.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
 
@@ -157,6 +161,8 @@ public class crudMarca extends javax.swing.JFrame {
 
         tb_Mostrar.addTab("DATOS", jPanel1);
 
+        tb_Marca.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        tb_Marca.setForeground(new java.awt.Color(255, 255, 255));
         tb_Marca.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -168,6 +174,7 @@ public class crudMarca extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tb_Marca.setOpaque(false);
         tb_Marca.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tb_MarcaMouseClicked(evt);

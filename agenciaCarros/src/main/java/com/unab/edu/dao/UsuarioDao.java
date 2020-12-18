@@ -52,27 +52,46 @@ public class UsuarioDao {
     //SP_U_USUARIO--COMPLETADO!
     public void actualizarUsuario(Usuario usuario) {
         try {
-            CallableStatement statement = con.prepareCall("call SP_U_Usuario(?,?,?,?,?)");
+            CallableStatement statement = con.prepareCall("call SP_U_Usuario(?,?,?,?)");
             
             statement.setInt("pIdusu", usuario.getIdUsuario());  
             statement.setString("pUsuario", usuario.getUsuario());
-            statement.setString("pPass", usuario.getPass());
             statement.setString("pTipo", usuario.getTipo());
             statement.setInt("pId", usuario.getId());  
-           
-            statement.execute();
+            //System.out.println(usuario.getIdUsuario()+"-"+usuario.getUsuario()+"-"+usuario.getPass()+"-"+usuario.getTipo()+"-"+usuario.getId());
+            int i =statement.executeUpdate();
+            if(i==1){
+                JOptionPane.showMessageDialog(null, "USUARIO ACTUALIZADOOOOOOOO!");
+            }else{
+                JOptionPane.showMessageDialog(null, "Error al Actualizar");
+            }
             con.close();
-            
-            JOptionPane.showMessageDialog(null, "USUARIO ACTUALIZADO!");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "ERROR AL ACTUALIZAR");
         }
     }
-    
-    
-   
-    
-    
+    public void actualizarUsuario(Usuario usuario, String passUdate) {
+        try {
+            CallableStatement statement = con.prepareCall("call SP_U_Usuario2(?,?,?,?,?)");
+            
+            statement.setInt("pIdusu", usuario.getIdUsuario());  
+            statement.setString("pUsuario", usuario.getUsuario());
+            statement.setString("pPass", passUdate);
+            statement.setString("pTipo", usuario.getTipo());
+            statement.setInt("pId", usuario.getId());  
+            //System.out.println(usuario.getIdUsuario()+"-"+usuario.getUsuario()+"-"+usuario.getPass()+"-"+usuario.getTipo()+"-"+usuario.getId());
+            int i =statement.executeUpdate();
+            if(i==1){
+                JOptionPane.showMessageDialog(null, "USUARIO ACTUALIZADO");
+            }else{
+                JOptionPane.showMessageDialog(null, "Error al Actualizar");
+            }
+            con.close();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "ERROR AL ACTUALIZAR");
+        }
+    }
+       
     //SP_D_USUARIO--COMPLETADO!
     public void eliminarUsuario(Usuario usuario) {
         
@@ -89,10 +108,6 @@ public class UsuarioDao {
             JOptionPane.showMessageDialog(null, "ERROR AL INTENTAR ELIMINAR LOS DATOS" + e);
         }
     }
-    
-    
-    
-    
     
     //SP_S_USUARIO--COMPLETADO!
      public ArrayList<Usuario> MostrarUsuario() {
@@ -111,6 +126,7 @@ public class UsuarioDao {
                 usua.setPass(us.getString("Pass"));
                 usua.setTipo(us.getString("Tipo"));
                 usua.setId(us.getInt("idEmpleado"));
+                usua.setNombre(us.getString("Nombre"));
                               
                 listado.add(usua);
             }
@@ -122,24 +138,16 @@ public class UsuarioDao {
         return listado;
     }
      
-     
-     
-     
-     
      //SP_S_INGRESAR--COMPLETADO!:para el ingreso
      public Usuario Login(Usuario user) {
         Usuario usu = new Usuario();
-        
         try {
-            
             CallableStatement statement = con.prepareCall("call SP_S_Ingresar(?,?,?);");
-            
             
             statement.setString("pUsuario", user.getUsuario());
             statement.setString("pPass", user.getPass());
             statement.setString("pTipo", user.getTipo());      
             ResultSet result = statement.executeQuery();
-            
             
             while (result.next()) {
                 usu.setIdUsuario(result.getInt("idUsuario"));
@@ -148,9 +156,8 @@ public class UsuarioDao {
                 usu.setTipo(result.getString("Tipo"));                        
             }
             
-            
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "No se encontró el usuario" + e);
+            JOptionPane.showMessageDialog(null, "Credenciales no válidas" + e);
         }
         return usu;
     }

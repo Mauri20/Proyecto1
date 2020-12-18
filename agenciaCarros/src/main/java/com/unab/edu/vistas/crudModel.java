@@ -9,6 +9,7 @@ import com.unab.edu.dao.MarcaDao;
 import com.unab.edu.dao.ModeloDao;
 import com.unab.edu.entidades.Marca;
 import com.unab.edu.entidades.Modelo;
+import com.unab.edu.entidades.Tablas;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.util.ArrayList;
@@ -35,6 +36,7 @@ public class crudModel extends javax.swing.JFrame {
         valueMember = new String[Marcas.size() + 1];
         String filas[] = new String[3];
         cbdefault.addElement("");
+        
         for (var iterador : Marcas) {
             filas[0] = String.valueOf(iterador.getId());
             filas[1] = iterador.getNombreMarca();
@@ -52,7 +54,9 @@ public class crudModel extends javax.swing.JFrame {
         this.setLocationRelativeTo(this);
         MostrarTablaModelo();
         DisplayMember();
-
+        
+        Tablas.removeBackground(tbModelo, jScrollPane1);
+        Tablas.resizeColumnWidth(tbModelo, 21, 81);
     }
 
     void MostrarTablaModelo() {
@@ -62,8 +66,8 @@ public class crudModel extends javax.swing.JFrame {
         var MostrarModelos = claseModelo.MostrarModelos();
         String filas[] = new String[4];
         for (var iterador : MostrarModelos) {
-            filas[0] = String.valueOf(iterador.getNombreMarca());
-            filas[1] = String.valueOf(iterador.getId());
+            filas[0] = String.valueOf(iterador.getId());
+            filas[1] = String.valueOf(iterador.getIdModelo());
             filas[2] = String.valueOf(iterador.getNombreModelo());
             df.addRow(filas);
         }
@@ -197,6 +201,10 @@ public class crudModel extends javax.swing.JFrame {
 
         tbMostrarDatos.addTab("DATOS", jPanel1);
 
+        jPanel2.setOpaque(false);
+
+        tbModelo.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        tbModelo.setForeground(new java.awt.Color(255, 255, 255));
         tbModelo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -208,6 +216,8 @@ public class crudModel extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tbModelo.setGridColor(new java.awt.Color(255, 255, 255));
+        tbModelo.setOpaque(false);
         tbModelo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tbModeloMouseClicked(evt);
@@ -272,8 +282,9 @@ public class crudModel extends javax.swing.JFrame {
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         try {
             ModeloDao Modelos = new ModeloDao();
-            Modelo Modelo = new Modelo();
-            Modelos.eliminarModelo(Modelo);
+            Modelo modelo = new Modelo();
+            modelo.setIdModelo(Integer.parseInt(txtId.getText()));
+            Modelos.eliminarModelo(modelo);
             MostrarTablaModelo();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error, verifique los datos");
@@ -285,7 +296,9 @@ public class crudModel extends javax.swing.JFrame {
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
         txtId.setText("");
-        cbMarca.setSelectedIndex(0);
+        valueMember = null;
+        contador=1;
+        DisplayMember();
         txtNombre.setText("");
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
@@ -301,12 +314,15 @@ public class crudModel extends javax.swing.JFrame {
 
         int seleccionadordeVista = 0;
         for (var it : valueMember) {
-
-            if (Id.equals(it)) {
+            if (it == null) {
+                it = "0";
+            }
+            if (it.trim().equals(Marca)) {
                 cbMarca.setSelectedIndex(seleccionadordeVista);
             }
             seleccionadordeVista += 1;
         }
+       
     }//GEN-LAST:event_tbModeloMouseClicked
 
     private void lblMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMenuMouseClicked

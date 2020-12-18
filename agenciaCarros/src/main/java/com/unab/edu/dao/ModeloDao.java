@@ -22,7 +22,8 @@ public class ModeloDao {
     //Metodos de acceso a la base de datos
     public void agregarModelo(Modelo modelo) {
         try {
-            CallableStatement statement = con.prepareCall("call SP_I_Modelo(?)");
+            CallableStatement statement = con.prepareCall("call SP_I_Modelo(?,?)");
+            statement.setInt("MIdMarca", modelo.getId());
             statement.setString("MNombre", modelo.getNombreModelo());
 
             statement.execute();
@@ -37,8 +38,9 @@ public class ModeloDao {
 
     public void actualizarModelo(Modelo modelo) {
         try {
-            CallableStatement statement = con.prepareCall("call SP_U_Modelo(?,?)");
+            CallableStatement statement = con.prepareCall("call SP_U_Modelo(?,?,?)");
             statement.setInt("MIdModelo", modelo.getIdModelo());
+            statement.setInt("MIdMarca", modelo.getId());
             statement.setString("MNombre", modelo.getNombreModelo());
 
             statement.execute();
@@ -55,8 +57,13 @@ public class ModeloDao {
         try {
             CallableStatement statement = con.prepareCall("call SP_D_Modelo(?)");
             statement.setInt("MIdModelo", modelo.getIdModelo());
-            statement.execute();
-            JOptionPane.showMessageDialog(null, "Datos eliminados correntamente");
+            int consulta=statement.executeUpdate();
+            if(consulta==1){
+                JOptionPane.showMessageDialog(null, "Datos eliminados correntamente");
+            }else{
+                JOptionPane.showMessageDialog(null, "Ocurrio un error");
+            }
+            
             con.close();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Ocurrio un error al eliminar los Datos " + e);
@@ -71,7 +78,8 @@ public class ModeloDao {
             ResultSet res = statement.executeQuery();
             while (res.next()) {
                 Modelo model = new Modelo();
-                model.setId(res.getInt("idMarcaModelo"));
+                model.setId(res.getInt("idMarca"));
+                model.setIdModelo(res.getInt("idMarcaModelo"));
                 model.setNombreModelo(res.getString("Modelo"));
                 listado.add(model);
             }
