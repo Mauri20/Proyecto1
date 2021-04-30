@@ -1,0 +1,53 @@
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+.bbody {
+	background-color: #b2c2cf;
+	font-family: "Montserrat", sans-serif;
+}
+
+.PartSuperior {
+	background-color: #303846;
+	border-bottom: 100px;
+}
+
+.Logo {
+	width: 45%;
+	display: block;
+	margin: auto;
+}
+
+.pintro {
+	text-align: center;
+	font-size: 25px;
+}
+
+.happies {
+	width: 4%;
+	display: block;
+	margin: auto;
+}
+
+.p2message {
+	text-align: center;
+	font-size: 17px;
+	font-weight: 400;
+}
+
+.regresar {
+	font-family: "Montserrat", sans-serif;
+	font-size: 25px;
+	text-align: center;
+	width: 20%;
+	display: block;
+	margin: auto;
+	border: solid 2px #1FA189;
+	padding: 10px;
+	background: #1FA189;
+	color: #ffff;
+	border-radius: 20px;
+	cursor: pointer;
+}
